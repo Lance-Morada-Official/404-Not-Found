@@ -17,11 +17,13 @@
                 <div class="login-header">
                     <header>Login</header>
                 </div>
+				
                 <div class="input-box">
-                    <input type="email" class="form-control input-field" placeholder="Email" autocomplete="off" required>
+				<form action="verifylogin.php" method="post" target="_self">
+                    <input type="username" class="form-control input-field" placeholder="Username" autocomplete="off" required name="username">
                 </div>
                 <div class="input-box">
-                    <input type="password" class="form-control input-field" placeholder="Password" autocomplete="off" required>
+                    <input type="password" class="form-control input-field" placeholder="Password" autocomplete="off" required name="password">
                 </div>
                 <div class="forgot">
                     <div class="form-check">
@@ -32,7 +34,9 @@
                 </div>
                 <div class="input-submit">
                     <button class="submit-btn" id="submit">Login</button>
-                </div>
+                </form>
+				</div>
+
                 <div class="sign-up-link">
                     <p>Don't have an account? <a href="#">Sign Up</a></p>
                 </div>
