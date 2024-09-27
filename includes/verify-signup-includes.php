@@ -1,17 +1,23 @@
 <?php
 
 if (isset($_POST["signup"])){
+    $uname = $_POST["uname"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
+    $password = $_POST["password"];
     $bdate = $_POST["birthdate"];
     $email = $_POST["email"];
-    $password = $_POST["password"];
+    $phonenum = $_POST["phonenum"];
+    
+    require_once 'header-dbconn-include.php';
+    require_once 'functions-include.php';
 
-    require_once 'header-dbconn-include.php'; #file does not exist yet
-    require_once 'functions-include.php'; #file does not exist yet
-
-    if (emptyInputSignup($fname,$lname,$bdate,$email,$password) !== false){
+    if (emptyInputSignup($uname,$fname,$lname,$password,$bdate,$email,$phonenum) !== false){
         header("location: ../signup.php?error=emptyinput");
+        exit();
+    }
+    if (invalidUsername($uname) !== false){
+        header("location: ../signup.php?error=invalidusername");
         exit();
     }
     if (invalidFname($fname) !== false){
@@ -26,12 +32,16 @@ if (isset($_POST["signup"])){
         header("location: ../signup.php?error=invalidemail");
         exit();
     }
-    if (emailExists($conn, $email) !== false){
+    if (uidExists($conn, $email) !== false){
         header("location: ../signup.php?error=emailalreadyexists");
         exit();
     }
+    if (invalidPhoneNum($phonenum) !== false){
+        header("location: ../signup.php?error=invalidphonenumber");
+        exit();
+    }
 
-    createUser($conn, $fname. $lname, $bdate, $email, $password);
+    createUser($conn, $fname, $lname, $bdate, $email, $password);
 }
 else {
     header("location: ../signup.php");
