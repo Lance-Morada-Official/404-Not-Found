@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST["signup"])){
+if (isset($_POST["Signup"])){
     $uname = $_POST["uname"];
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
