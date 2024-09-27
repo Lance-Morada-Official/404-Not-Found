@@ -7,7 +7,7 @@ function emptyInputSignup($uname,$fname,$lname,$password,$bdate,$email,$phonenum
     }
 }
 function invalidUsername($uname){
-    if(!preg_match("/^[a-zA-Z0-9]*$/",$lname)){
+    if(!preg_match("/^[a-zA-Z0-9]*$/",$uname)){
         return true;
     }else{
         return false;
