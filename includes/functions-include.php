@@ -65,7 +65,7 @@ function invalidPhoneNum($phonenum){
 }
 function createUser($conn,$uname,$fname,$lname,$password,$bdate,$email,$phonenum){
     $result;
-    $sql = "INSERT INTO _user (username,firtname,lastname,password,birthday,email,phone_num) VALUES (?,?,?,?,?,?,?);";
+    $sql = "INSERT INTO _user (username,firtname,lastname,'password',birthday,email,phone_num) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("location: ../signup.php?error=preparedstatementfailed");
