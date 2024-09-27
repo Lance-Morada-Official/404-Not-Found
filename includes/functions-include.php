@@ -57,10 +57,13 @@ function uidExists($conn,$uname,$email){
     mysqli_stmt_close($stmt);
 }
 function invalidPhoneNum($phonenum){
+    $result
     if(!preg_match("/^[0-9]{11,12}$/",$phonenum){
-        return true;
+        $result = true;
+        return $result;
     }else{
-        return false;
+        $result = false;
+        return $result;
     }
 }
 function createUser($conn,$uname,$fname,$lname,$password,$bdate,$email,$phonenum){
