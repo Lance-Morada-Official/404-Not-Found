@@ -58,7 +58,7 @@ function uidExists($conn,$uname,$email){
 }
 function invalidPhoneNum($phonenum){
     $result
-    if(!preg_match("/^[0-9]{10,13}$/",$phonenum){
+    if(!preg_match("/^[0-9]{11,12}$/",$phonenum)){
         $result = true;
         return $result;
     }else{
