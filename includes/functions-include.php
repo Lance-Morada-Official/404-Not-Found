@@ -7,21 +7,21 @@ function emptyInputSignup($uname,$fname,$lname,$password,$bdate,$email,$phonenum
     }
 }
 function invalidUsername($uname){
-    if(!preg_match("/^[a-zA-Z0-9]*$/"),$lname){
+    if(!preg_match("/^[a-zA-Z0-9]*$/",$lname){
         return true;
     }else{
         return false;
     }
 }
 function invalidFname($fname){
-    if(!preg_match("/^[a-zA-Z0-9]*$/"),$fname){
+    if(!preg_match("/^[a-zA-Z0-9]*$/",$fname){
         return true;
     }else{
         return false;
     }
 }
 function invalidLname($lname){
-    if(!preg_match("/^[a-zA-Z0-9]*$/"),$lname){
+    if(!preg_match("/^[a-zA-Z0-9]*$/",$lname){
         return true;
     }else{
         return false;
@@ -57,31 +57,27 @@ function uidExists($conn,$uname,$email){
     mysqli_stmt_close($stmt);
 }
 function invalidPhoneNum($phonenum){
-    if(!preg_match("/^[0-9]{11,12}$/"),$phonenum){
+    if(!preg_match("/^[0-9]{11,12}$/",$phonenum){
         return true;
     }else{
         return false;
     }
 }
-function createUser($conn, $fname, $lname, $bdate, $email, $password){
+function createUser($conn,$uname,$fname,$lname,$password,$bdate,$email,$phonenum){
     $result;
-    $sql = "INSERT INTO users () VALUES ();";
+    $sql = "INSERT INTO _user (username,firtname,lastname,password,birthday,email,phone_num) VALUES (?,?,?,?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("location: ../signup.php?error=preparedstatementfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt,"s",$email);
+
+    $hashPassword = password_hash($password,PASSWORD_DEFAULT); #not yet working because database only holds 50 characters
+
+    mysqli_stmt_bind_param($stmt,"ssssssi",$uname,$fname,$lname,$password,$bdate,$email,$phonenum);
     mysqli_stmt_execute($stmt);
-
-    $resultData = mysqli_stmt_get_result($stmt);
-
-    if($row = mysqli_fetch_assoc($resultData)){
-        return $row;
-    }else{
-        $result = false;
-        return $result;
-    }
-
     mysqli_stmt_close($stmt);
+    header("location: ../signup.php?error=none");
+    exit();
+    
 }
