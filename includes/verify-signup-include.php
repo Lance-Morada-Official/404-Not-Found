@@ -44,6 +44,6 @@ if (isset($_POST["Signup"])){
     createUser($conn,$uname,$fname,$lname,$password,$bdate,$email,$phonenum);
 }
 else {
-    header("location: ../signup.php?error=invallidaccess");
+    header("location: ../signup.php?error=invalidaccess");
     exit();
 }

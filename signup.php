@@ -10,5 +10,5 @@
     <input type="date" name = "birthdate" required>
     <input type="text" placeholder="Email" name = "email" required>
     <input type="text" placeholder="Phone Number" name = "phonenum" required>
-    <input type="submit" value = "Signup" required>
+    <input type="submit" name = "Signup" value = "Signup" required>
 </form>
