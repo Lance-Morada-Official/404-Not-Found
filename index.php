@@ -17,15 +17,12 @@
                 <div class="login-header">
                     <header>Login</header>
                 </div>
-                <!-- form to submit user inputs -->
-				<form action="verify-login-include.php" method="post" target="_self"></form>
-                    <!-- username field -->
+                <form action="login-verify-include.php" method="POST">
                     <div class="input-box">
-                        <input type="username" class="form-control input-field" placeholder="Username" autocomplete="off" required name="username">
+                        <input type="email" class="form-control input-field" placeholder="Email" autocomplete="off" required>
                     </div>
-                    <!-- password field -->
                     <div class="input-box">
-                        <input type="password" class="form-control input-field" placeholder="Password" autocomplete="off" required name="password">
+                        <input type="password" class="form-control input-field" placeholder="Password" autocomplete="off" required>
                     </div>
                     <div class="forgot">
                         <div class="form-check">
@@ -34,14 +31,14 @@
                         </div>
                         <a href="#">Forgot Password?</a>
                     </div>
-                    <!-- submit -->
                     <div class="input-submit">
-                        <input type="submit" class="submit-btn" id="submit" value=""Login>
+                        #changed the button into input: type-submit
+                        <input  type="submit" value="Login" class="submit-btn" id="submit">Login</button>
+                    </div>
+                    <div class="sign-up-link">
+                        <p>Don't have an account? <a href="#">Sign Up</a></p>
                     </div>
                 </form>
-                <div class="sign-up-link">
-                    <p>Don't have an account? <a href="#">Sign Up</a></p>
-                </div>
             </div>
 
             <!-- Right side: Slogan -->
