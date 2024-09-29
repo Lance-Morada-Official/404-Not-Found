@@ -55,7 +55,7 @@
 
             // Validate phone number if provided
             const phoneInput = accountForm.querySelector('#phone').value;
-            if (phoneInput && !/^\+?[1-9]\d{1,14}$/.test(phoneInput)) {
+            if (phoneInput && !/([0-9]{11}|\+[0-9]{12})$/.test(phoneInput)) {
                 alert("Please enter a valid phone number.");
                 accountForm.querySelector('#phone').classList.add('is-invalid');
                 return; // Stop submission if phone number is invalid
