@@ -1,1 +1,30 @@
+body {
+    background-color: #f8f9fa; /* Light background for contrast */
+}
 
+.profile-card {
+    background-color: #ffffff; /* White background for card */
+    border: 1px solid #161530; /* Border color */
+}
+
+.profile-header {
+    background-color: #161530; /* Dark background for the header */
+    color: white; /* White text for contrast */
+    padding: 15px;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+.btn-primary {
+    background-color: #161530; /* Primary button color */
+    border-color: #161530; /* Border color for button */
+}
+
+.btn-primary:hover {
+    background-color: #1a1c34; /* Slightly darker on hover */
+    border-color: #1a1c34; /* Border color on hover */
+}
+
+.img-fluid {
+    border: 3px solid #161530; /* Border around the profile picture */
+}
