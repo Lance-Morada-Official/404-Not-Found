@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="home.css"/>
     <link rel="stylesheet" href="../Navigation/navigation_bar.css">
     <title>Navigation Bar Test</title>
@@ -13,12 +14,17 @@
         .custom-container-2 {
             position: relative;
         }
+        /* Floating Logout Button */
+        .logout-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body class="vh-100 overflow-hidden">
-        <?php include '../Navigation/navigation_bar.php'; ?>    
-
-
+        <?php include '../Navigation/navigation_bar.php'; ?>
 
     <div class="container-fluid mt-4">
         <div class="row vh-90">
@@ -108,6 +114,12 @@
             </div>
         </div>
     </div>
+
+    <!-- Logout Button -->
+    <a href="../Backend/Login-Functions/logout.php" class="btn btn-danger logout-btn">
+        <i class="bi bi-box-arrow-right"></i> 
+        Logout
+    </a>
 
     <script>
         // Array to hold invited users
