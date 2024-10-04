@@ -15,7 +15,9 @@
     </style>
 </head>
 <body class="vh-100 overflow-hidden">
-    <?php include 'navigation_bar.php'; ?>
+        <?php include '../Navigation/navigation_bar.php'; ?>    
+
+
 
     <div class="container-fluid mt-4">
         <div class="row vh-90">

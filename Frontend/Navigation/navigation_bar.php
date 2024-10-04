@@ -9,10 +9,10 @@
                 <?php 
                 $current_page = basename($_SERVER['PHP_SELF']); // Get current page name
                 ?>
-                <a class="nav-link <?php echo $current_page == 'Navi-Test.php' ? 'active' : ''; ?>" href="Navi-Test.php">Home</a>
+                <a class="nav-link <?php echo $current_page == '..\Home\home.php' ? 'active' : ''; ?>" href="..\Home\home.php">Home</a>
                 <a class="nav-link <?php echo $current_page == 'add_friends.php' ? 'active' : ''; ?>" href="#">Add Friends</a>
                 <a class="nav-link <?php echo $current_page == 'friends.php' ? 'active' : ''; ?>" href="#">Friends</a>
-                <a class="nav-link <?php echo $current_page == 'pf.php' ? 'active' : ''; ?>" href="pf.php">Profile</a>
+                <a class="nav-link <?php echo $current_page == '..\Profile\profile.php' ? 'active' : ''; ?>" href="..\Profile\profile.php">Profile</a>
                 <a class="nav-link <?php echo $current_page == 'wallet.php' ? 'active' : ''; ?>" href="#">Wallet</a>
                 <a class="nav-link <?php echo $current_page == 'wallet.php' ? 'active' : ''; ?>" href="val.php">Test</a>
             </div>
