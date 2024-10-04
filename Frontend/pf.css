@@ -1,0 +1,47 @@
+body{
+    background: url('Ganyu_2.png') rgba(0,0,0,0.3);
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Custom Navbar Styles */
+.custom-navbar {
+    background-color: white; /* White background */
+    padding: 15px; /* Padding for aesthetics */
+    box-shadow: 0px 4px 2px -2px gray; /* Optional shadow for depth */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+/* Aligns the nav links on the right */
+.navbar-nav {
+    display: flex;
+    gap: 20px; /* Space between the links */
+}
+
+.navbar-nav .nav-link {
+    color: black; /* Black text for the links */
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff; /* Blue text on hover */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #007bff; /* Different color for the active link */
+}
+
+.navbar-toggler {
+    border: none; /* Removes the default border around the navbar toggle button */
+}
