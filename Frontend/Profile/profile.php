@@ -36,7 +36,7 @@
                     <!-- Profile Picture -->
                     <form action="upload_profile_pic.php" method="POST" enctype="multipart/form-data">
                         <div class="text-center mb-3">
-                            <img src="profile_pics/<?php echo $user_id; ?>.jpg" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
+                            <img src="..\..\Backend\Profile-Functions\upload_profile_pic.php/<?php echo $user_id; ?>.jpg" alt="Profile Picture" class="img-fluid rounded-circle" width="150">
                             <input type="file" name="profile_pic" class="form-control mt-2">
                             <button type="submit" class="btn btn-primary mt-2">Upload New Picture</button>
                         </div>
