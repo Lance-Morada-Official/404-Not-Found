@@ -5,8 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Frontend\Login\login.css">
+    <link rel="stylesheet" href="style.css">
     <title>Login | 404 NOT FOUND</title>
+<script type="text/javascript">
+        // Check for URL query parameters to show alerts
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('error')) {
+                const errorType = urlParams.get('error');
+                if (errorType === 'account_not_found') {
+                    alert('Account not found. Please try again.');
+                } else if (errorType === 'invalid_password') {
+                    alert('Invalid password. Please try again.');
+                }
+            }
+        };
+</script>
 </head>
 
 <body>
@@ -19,7 +33,7 @@
                 </div>
 				
                 <div class="input-box">
-				<form action="verifylogin.php" method="post" target="_self">
+				<form action="..\..\Backend\Login\VerifyLogin.php" method="post" target="_self">
                     <input type="username" class="form-control input-field" placeholder="Username" autocomplete="off" required name="username">
                 </div>
                 <div class="input-box">
@@ -33,12 +47,12 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <div class="input-submit">
-                    <button class="submit-btn" id="submit">Login</button>
+                    <button class="submit-btn" id="submit" name="submit">Login</button>
                 </form>
 				</div>
 
                 <div class="sign-up-link">
-                    <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+                    <p>Don't have an account? <a href="SignUpPage.php">Sign Up</a></p>
                 </div>
             </div>
 
