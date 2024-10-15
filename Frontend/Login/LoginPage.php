@@ -52,7 +52,7 @@
 				</div>
 
                 <div class="sign-up-link">
-                    <p>Don't have an account? <a href="SignUpPage.php">Sign Up</a></p>
+                    <p>Don't have an account? <a href="../../Frontend/Signup/SignUpPage.php">Sign Up</a></p>
                 </div>
             </div>
 
