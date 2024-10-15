@@ -1,0 +1,67 @@
+body {
+    background: url('Ayaka_2.jpg') rgba(0, 0, 0, 0.3);
+    background-blend-mode: multiply;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Custom CSS for the container */
+.custom-container-1, .custom-container-2, .custom-container-3 {
+    width: 100%;  /* Full width for all containers */
+    background-color: #f8f9fa; /* Light background */
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Specific styles for custom-container-3 */
+.custom-container-3 {
+    height: auto; /* Auto height for the container */
+    min-height: 100%; /* Ensure it takes full height of the right column */
+}
+
+h1 {
+    color: #343a40; /* Dark text color for heading */
+}
+
+p {
+    color: #495057; /* Slightly lighter text color for paragraph */
+}
+
+.carousel-inner img {
+    height: 400px; /* Set a fixed height for the carousel images */
+    object-fit: cover; /* Ensure images cover the area without stretching */
+}
+
+/* Custom button to replace container 1 */
+button.custom-container-1 {
+    width: 100%; /* Full width for the button */
+    background-color: #f8f9fa; /* Light background */
+    border: 2px solid #007bff; /* Blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    text-align: left; /* Align text to the left */
+    color: #343a40; /* Dark text color */
+}
+
+/* Change cursor to pointer for button */
+button.custom-container-1:hover {
+    cursor: pointer;
+    background-color: #e9ecef; /* Slightly darker background on hover */
+}
+
+/* Adjust heading and paragraph within the button */
+button.custom-container-1 h1 {
+    margin: 0; /* Remove default margins */
+    font-size: 1.5rem; /* Adjust font size */
+    color: #343a40; /* Dark text color */
+}
+
+button.custom-container-1 p {
+    margin-top: 5px; /* Small space above the paragraph */
+    font-size: 1rem; /* Smaller text for the description */
+    color: #495057; /* Slightly lighter text color */
+}

@@ -1,0 +1,14 @@
+.wallet-card {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+}
+
+#currencyInput {
+    font-size: 1.2rem;
+}
+
+#displayAmount {
+    font-size: 1.1rem;
+}	
