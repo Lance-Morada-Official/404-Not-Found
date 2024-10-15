@@ -13,15 +13,13 @@
 <body class="vh-100 overflow-hidden">
 <?php 
 require('..\Navigation\navigation_bar.php');
-
-session_start(); // Start the session to access session variables
-
-if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
-    die("You must be logged in to view your details.");
-}
+/*session_start();
+	if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
+		die("You must be logged in to view your details.");
+	}*/
 require('..\..\Backend\include\dbconnect-include.php');
-require('..\..\Backend\Profile\DisplayUserData.php');
-
+//require('..\..\Backend\Profile\DisplayUserData.php');
+$connect->close();
 ?>
     <div class="container mt-5">
         <div class="row">

@@ -12,14 +12,15 @@
 <?php 
 include '..\Navigation\navigation_bar.php'; 
 
-session_start(); // Start the session to access session variables
+/*session_start(); // Start the session to access session variables
 
 if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
     die("You must be logged in to view your details.");
-}
+}*/
 require('..\..\Backend\include\dbconnect-include.php');
 
-require('..\..\Backend\Wallet\Addamount.php');
+//require('..\..\Backend\Wallet\Addamount.php');
+$connect->close();
 ?>
 
 </head>
