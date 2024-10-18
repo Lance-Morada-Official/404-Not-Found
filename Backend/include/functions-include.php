@@ -19,6 +19,7 @@ function Verifylogin($connect,$Username,$Password){
 			$role_id = $role_row['role_id'];
 			if($role_id == '1'){
 				echo "Login successful as User!";
+				$_SESSION['user_id'] = $user_id;
 				$_SESSION['username'] = $Username;
 				header('Location: ..\..\Frontend\Home\Home.php');
 				return true;
@@ -26,6 +27,7 @@ function Verifylogin($connect,$Username,$Password){
 			}
 			elseif($role_id == '2'){
 				echo "Login successful as Admin!";
+				$_SESSION['user_id'] = $user_id;
 				$_SESSION['username'] = $Username;
 				return true;
 				exit();
