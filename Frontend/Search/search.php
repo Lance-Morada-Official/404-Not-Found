@@ -12,15 +12,14 @@
 </head>
 <body class="vh-100 overflow-hidden">
     <?php 
-	include '..\Navigation\navigation_bar.php'; 
-	/*session_start();
+	include '..\..\Frontend\Navigation\navigation_bar.php'; 
+	session_start();
 	if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
 		die("You must be logged in to view your details.");
 	}
 	require('..\..\Backend\include\dbconnect-include.php');
 		
 	$connect->close();
-	*/
 	?>
 </body>
 </html>

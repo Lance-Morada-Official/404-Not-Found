@@ -1,11 +1,4 @@
 <?php
-/*
-$connect = new mysqli("localhost","root","alanrussel0503","BCDatabase");
-if($connect->connect_error){
-	echo "Connection Problem" . $connect->connect_error;
-}
-*/
-
 //Get the username from the session
 $username = $_SESSION['username'];
 //fetch the usernames userid

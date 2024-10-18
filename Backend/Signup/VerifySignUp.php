@@ -18,7 +18,12 @@ $email_error = null;
 
 if(!empty(isset($_POST['confirm']))){
 	//connect to database
-	require('..\include\dbconnect-include.php');
+	/*$connect = new mysqli('localhost', 'root', 'alanrussel0503', 'BCDatabase');
+
+	if ($connect->connect_error) {
+		die("Connection failed: " . $connect->connect_error);
+	}*/
+	include('..\..\Backend\include\dbconnect-include.php');
 
 	//username
     if (empty(trim($_POST["username"]))) {
@@ -69,7 +74,7 @@ if(!empty(isset($_POST['confirm']))){
 	//no empty field
 	if (empty($username_error) && empty($finame_error) && empty($laname_error) && empty($password_error) && empty($confirm_password_error) && empty($email_error) && (empty($phone_error))) {
 	
-		require('..\include\functions-include.php');
+		include('..\..\Backend\include\functions-include.php');
 		Inserttouser($connect,$username,$firstname,$lastname, $confirm_password, $email, $phone_number);
 	}
 //close connection

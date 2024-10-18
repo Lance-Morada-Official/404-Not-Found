@@ -1,7 +1,7 @@
 <?php
 session_start();
-require('..\include\dbconnect-include.php');
-require('..\include\functions-include.php');
+require('..\..\Backend\include\dbconnect-include.php');
+require('..\..\Backend\include\functions-include.php');
 
 
 
