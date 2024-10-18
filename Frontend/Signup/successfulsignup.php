@@ -46,7 +46,7 @@ p {
 <script type="text/javascript">
         // JavaScript redirect after 5 seconds
         setTimeout(function() {
-            window.location.href = 'LoginPage.php';
+            window.location.href = 'connecttolog.php';
         }, 2000); // 5000ms = 5 seconds
 </script>
 

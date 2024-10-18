@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="..\Navigation\navigation_bar.css">
     <title>Digital Currency</title>
 <?php 
-include '..\Navigation\navigation_bar.php'; 
+include '..\..\Frontend\Navigation\navigation_bar.php'; 
 
 /*session_start(); // Start the session to access session variables
 
@@ -19,8 +19,7 @@ if (!isset($_SESSION['username'])) {  // Check if the user is logged in by check
 }
 require('..\..\Backend\include\dbconnect-include.php');
 
-//require('..\..\Backend\Wallet\Addamount.php');
-$connect->close();
+require('..\..\Backend\Wallet\Addamount.php');
 */
 ?>
 
