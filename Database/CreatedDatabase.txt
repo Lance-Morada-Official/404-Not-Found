@@ -75,15 +75,15 @@ insert into _users(username,fname,lname,password,email,phone_num)
 Values
 ("1admin","Russel","Domingo","russelalan","alanrussel@gmail.com","09974324433"),
 ("2admin","Patrick","Maraan","patrick","patrick@gmail.com","09974421533");
-//Assigning Roles
-insert into users_roles (user_id,role_id)
-Values
-("1","2"),
-("2","2");
+
 //Roles
 insert into _roles (role_name)
 values
 ("User"),
 ("Admin");
 
-
+//Assigning Roles
+insert into users_roles (user_id,role_id)
+Values
+("1","2"),
+("2","2");
