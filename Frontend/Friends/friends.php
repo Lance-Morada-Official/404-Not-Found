@@ -18,18 +18,29 @@
     <?php 
 	include '..\..\Frontend\Navigation\navigation_bar.php';
     //get a list of the user's friends
-    $sql = "Select Fuser_id from _friendsystem where BINARY Muser_id = '$_SESSION['userid']'";
+    $sql = "Select * from _friendsystem where BINARY Muser_id = '$_SESSION['userid']' OR BINARY Fuser_id = '$_SESSION['userid']'";
 	$result = $connect->query($sql);
     if ($result->num_rows > 0) {
         ?>
-        <h1>Friends List</h1>
+        <h1>Friends</h1><br>
+        <hr><br>
+        <h2>Search Results:</h2><br>
         <?php
         while($row = mysqli_fetch_assoc($result)){
-            ?>
-            <div>
-                <h3><?php $row['Fuser_id'] ?>;</h3>
-            </div>
-            <?php
+            //if the column refers to the current user's id, select the other column
+            if($row['Muser_id'] == $_SESSION['userid']){
+                ?>
+                <div>
+                    <h3><?php $row['Fuser_id'] ?>;</h3>
+                </div>
+                <?php
+            }else {
+                ?>
+                <div>
+                    <h3><?php $row['Muser_id'] ?>;</h3>
+                </div>
+                <?php
+            }
         }
     }else {
         echo "0 results";
