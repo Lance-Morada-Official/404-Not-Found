@@ -15,6 +15,10 @@ if(isset($_POST['submit'])){
 
 //login validation
 Verifylogin($connect,$Username,$Password);
+
+//$idresult is from functions-include.php
+$_SESSION['userid'] = $idresult;
+$_SESSION['username'] = $Username;
 }
 $connect->close();
 ?>
