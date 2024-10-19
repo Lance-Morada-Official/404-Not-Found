@@ -171,7 +171,7 @@ textarea{
     top: 200px;
     left: 100px;
     width: 650px; 
-  height: 117px; 
+  height: 100px; 
   resize: none;
   padding-left: 16px; 
   padding-right: 16px;  
@@ -189,7 +189,7 @@ textarea{
 
 .details {
     position: absolute; 
-  top: 365px; 
+  top: 330px; 
   left: 100px;
   font-size: 20px; 
   line-height: 1px; 
@@ -200,10 +200,10 @@ textarea{
 .copymy-text,
 #textarea{
     position: absolute;
-    top: 380px;
+    top: 350px;
     left: 100px;
     width: 650px; 
-  height: 117px; 
+  height: 100px; 
   resize: none;
   padding-left: 16px; 
   padding-right: 16px;  
@@ -220,7 +220,7 @@ textarea{
 
 .notes {
     position: absolute; 
-  top: 535px; 
+  top: 480px; 
   left: 100px;
   font-size: 20px; 
   line-height: 1px; 
@@ -231,10 +231,10 @@ textarea{
 .copy-my-text,
 #textarea{
     position: absolute;
-    top: 550px;
+    top: 500px;
     left: 100px;
     width: 650px; 
-  height: 117px; 
+  height: 100px; 
   resize: none;
   padding-left: 16px; 
   padding-right: 16px;  
@@ -264,9 +264,9 @@ p [id="result"] {
 
 .btn {
     position: absolute;
-    top: 590px;
-    left: 700px;
-    font-size: 18px;
+    top: 620px;
+    left: 720px;
+    font-size: 15px;
     font-weight: bold;
     background: #5d57d9;
     width: 100px;
