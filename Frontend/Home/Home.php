@@ -10,19 +10,21 @@
     <link rel="stylesheet" href="..\Navigation\navigation_bar.css">
     <title>Navigation Bar Test</title>
     <style>
+		
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    
         .custom-container-2 {
             position: relative;
         }
     </style>
 </head>
-<body class="vh-100 overflow-hidden">
+<body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     <?php 
 	include '..\..\Frontend\Navigation\navigation_bar.php'; 
-	session_start();
-		if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
-			die("You must be logged in to view your details.");
-		}
+		require('..\..\Backend\include\session-include.php');
 		require('..\..\Backend\include\dbconnect-include.php');
+		require('..\..\Backend\Home\homebackend.php');
+		
 		
 		$connect->close();
 	?>   
@@ -34,43 +36,50 @@
             <!-- Left Column -->
             <div class="col-md-6">
                 <div class="container custom-container-1 mb-2">
-                    <h1>Test Container 1</h1>
-                    <p>This is a simple container.</p>
+                    <form method='POST'>
+					<h1>Invite a Seller</h1>
+					<p>Buy from a Seller</p>
+					<button class='btn btn-success' type='submit' name='trade'>Initiate a Trade</button>
+                    </form>
                 </div>
+				
                 <div class="container custom-container-2">
-                    <h1>Test Container 2</h1>
-                    <p>This is a simple container.</p>
-                    
-                    <div class="row mt-3" id="invited-users">
-                        <!-- Invited Users Will Be Displayed Here -->
-                    </div>
-                    
+                    <h1>Trade Invites</h1>
+                    <p>Sell to a Buyer.</p>
+					
                     <!-- User Invitation Section -->
-                    <div class="row mt-3">
-                        <?php
-                        // Sample user data (In a real application, this data would come from a database)
-                        $users = [
-                            ['id' => 1, 'username' => 'User1'],
-                            ['id' => 2, 'username' => 'User2'],
-                            ['id' => 3, 'username' => 'User3'],
-                        ];
-
-                        // Loop through users to create user invitation cards
-                        foreach ($users as $user) {
-                            echo "<div class='col-12 mb-2'>
-                                    <div class='card'>
-                                        <div class='card-body'>
-                                            <h5 class='card-title'>Username: {$user['username']}</h5>
-                                            <p class='card-text'>ID: {$user['id']}</p>
-                                            <button class='btn btn-success' onclick=\"inviteUser('{$user['username']}', {$user['id']})\">Invite</button>
-                                            <button class='btn btn-danger'>Decline</button>
-                                        </div>
-                                    </div>
-                                  </div>";
-                        }
-                        ?>
-                    </div>
+                    <?php if ($invites->num_rows > 0): ?>
+						<?php while ($row = $invites->fetch_assoc()): ?>
+							<div class="row mt-3">
+								<div class='col-12 mb-2'>
+									<div class='card'>
+										<div class='card-body'>
+											<h5 class='card-title'>Username: <?php echo htmlspecialchars($row['username']); ?></h5>
+											<p class='card-text'>ID: <?php echo htmlspecialchars($row['user_id']); ?></p>
+											<form method="post">
+												<input type="hidden" name="invitedby" value="<?php echo $row['user_id'];?>">
+												<button class='btn btn-success' name="action" value="accept">Accept</button>
+												<button class='btn btn-danger' name="action" value="decline">Decline</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php endwhile; ?>
+					<?php else: ?>
+						<div class="row mt-3">
+								<div class='col-12 mb-2'>
+									<div class='card'>
+										<div class='card-body'>
+											<h5 class='card-title'>---No Pending Request---</h5>
+										</div>
+									</div>
+								</div>
+						</div>
+					<?php endif; ?>
+					
                 </div>
+				
             </div>
 
             <!-- Right Column -->
@@ -118,36 +127,6 @@
         </div>
     </div>
 
-    <script>
-        // Array to hold invited users
-        const invitedUsers = [];
-
-        // Function to invite a user
-        function inviteUser(username, id) {
-            // Check if the user is already invited
-            if (!invitedUsers.includes(username)) {
-                invitedUsers.push(username);
-                updateInvitedUsersDisplay(username, id);
-            } else {
-                alert(`${username} is already invited.`);
-            }
-        }
-
-        // Function to update the display of invited users
-        function updateInvitedUsersDisplay(username, id) {
-            const invitedUsersDiv = document.getElementById('invited-users');
-            const userCard = document.createElement('div');
-            userCard.className = 'col-12 mb-2';
-            userCard.innerHTML = `
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Username: ${username}</h5>
-                        <p class="card-text">ID: ${id}</p>
-                    </div>
-                </div>
-            `;
-            invitedUsersDiv.appendChild(userCard);
-        }
-    </script>
+    
 </body>
 </html>

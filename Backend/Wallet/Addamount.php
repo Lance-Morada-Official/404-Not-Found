@@ -3,13 +3,10 @@
 $username = $_SESSION['username'];
 //fetch the usernames userid
 $getuid = "SELECT user_id FROM _users WHERE username = '$username'";
-$fetchuid = $connect->query($getuid);
+$fetchid = $connect->query($getuid);
+$idrow = $fetchid->fetch_assoc();
+$user_id = $idrow['user_id'];
 
-if ($user_row = $fetchuid->fetch_assoc()) {
-    $user_id = $user_row['user_id'];
-} else {
-    die("User not found.");
-}
 
 //get the amount to be added
 if(isset($_POST['submit'])){
@@ -28,6 +25,4 @@ if(isset($_POST['submit'])){
 }
 
 
-
-$connect->close();
 ?>

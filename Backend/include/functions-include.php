@@ -7,7 +7,7 @@ function Verifylogin($connect,$Username,$Password){
 		$getid = "SELECT user_id FROM _users WHERE username = '$Username'";
 		$idresult = $connect->query($getid);
 		
-		if ($user_row = mysqli_fetch_assoc($idresult)) {
+		if ($user_row = $idresult->fetch_assoc()) {
 			$user_id = $user_row['user_id'];
 		} else {
 			die("User not found.");
@@ -15,11 +15,12 @@ function Verifylogin($connect,$Username,$Password){
 		$getrole = "SELECT role_id FROM users_roles WHERE user_id = '$user_id'";
 		$roleidresult = $connect->query($getrole);
 		
-		if ($role_row = mysqli_fetch_assoc($roleidresult)) {
+		if ($role_row = $roleidresult->fetch_assoc()) {
 			$role_id = $role_row['role_id'];
 			if($role_id == '1'){
 				echo "Login successful as User!";
 				$_SESSION['username'] = $Username;
+				$_SESSION['user_id'] = $user_id;
 				header('Location: ..\..\Frontend\Home\Home.php');
 				return true;
 				exit();
@@ -27,6 +28,7 @@ function Verifylogin($connect,$Username,$Password){
 			elseif($role_id == '2'){
 				echo "Login successful as Admin!";
 				$_SESSION['username'] = $Username;
+				$_SESSION['user_id'] = $user_id;
 				return true;
 				exit();
 			}

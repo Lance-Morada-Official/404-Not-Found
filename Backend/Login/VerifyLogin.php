@@ -8,8 +8,8 @@ require('..\..\Backend\include\functions-include.php');
 
 //get login form
 if(isset($_POST['submit'])){
-    $Username =htmlspecialchars($_POST['username']);  //'Lancelot'; 
-    $Password =htmlspecialchars($_POST['password']); //'lance';
+    $Username =htmlspecialchars($_POST['username']); 
+    $Password =htmlspecialchars($_POST['password']);
 	$Username = $connect->real_escape_string($Username);
 	$Password = $connect->real_escape_string($Password);
 

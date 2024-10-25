@@ -9,19 +9,18 @@
     <link rel="stylesheet" href="profile.css"/>
     <link rel="stylesheet" href="..\Navigation\navigation_bar.css">
     <title>Navigation Bar Test</title>
+	<style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    </style>
 </head>
-<body class="vh-100 overflow-hidden">
+<body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
 <?php 
 require('..\..\Frontend\Navigation\navigation_bar.php');
-
-session_start(); // Start the session to access session variables
-
-if (!isset($_SESSION['username'])) {  // Check if the user is logged in by checking the session variable
-    die("You must be logged in to view your details.");
-}
+require('..\..\Backend\include\session-include.php');
 require('..\..\Backend\include\dbconnect-include.php');
 require('..\..\Backend\Profile\DisplayUserData.php');
 
+$connect->close();
 ?>
     <div class="container mt-5">
         <div class="row">
