@@ -47,10 +47,22 @@ foreign key (user_id) references _users(user_id)
 
 create table _friendsystem (
 connected_id bigint primary key auto_increment NOT NULL,
+Suser_id bigint NOT NULL,
+Ruser_id bigint NOT NULL,
+status enum('2','1','0') default '1' NOT NULL,
+dateconnected TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+constraint fk_senderuser
+foreign key (Suser_id) references _users(user_id),
+constraint fk_recieveruser
+foreign key (Ruser_id) references _users(user_id)
+);
+
+
+create table _friendtable (
+friend_id bigint primary key auto_increment NOT NULL,
 Muser_id bigint NOT NULL,
 Fuser_id bigint NOT NULL,
-status int NOT NULL,
-dateconnected date,
+dateconnected TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 constraint fk_mainuser
 foreign key (Muser_id) references _users(user_id),
 constraint fk_frienduser
@@ -61,8 +73,8 @@ create table _invitesystem (
 invited_id bigint primary key auto_increment NOT NULL,
 Cuser_id bigint NOT NULL,
 Iuser_id bigint NOT NULL,
-status int NOT NULL,
-dateinvited date,
+status enum('2','1','0') default '1' NOT NULL,
+dateinvited TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
 constraint fk_currentuser
 foreign key (Cuser_id) references _users(user_id),
 constraint fk_inviteduser
@@ -73,17 +85,17 @@ foreign key (Iuser_id) references _users(user_id)
 //Admin Account
 insert into _users(username,fname,lname,password,email,phone_num)
 Values
-("1admin","Russel","Domingo","russelalan","alanrussel@gmail.com","09974324433"),
-("2admin","Patrick","Maraan","patrick","patrick@gmail.com","09974421533");
+("1Admin","Russel","Domingo","russelalan","alanrussel@gmail.com","09974324433"),
+("2Admin","Patrick","Maraan","patrick","patrick@gmail.com","09974421533");
 
-//Roles
 insert into _roles (role_name)
 values
 ("User"),
 ("Admin");
 
-//Assigning Roles
 insert into users_roles (user_id,role_id)
 Values
 ("1","2"),
 ("2","2");
+
+

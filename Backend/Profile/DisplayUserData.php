@@ -16,5 +16,5 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo "User details not found.";
 }
 
-$connect->close();
+
 ?>

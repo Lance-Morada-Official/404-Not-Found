@@ -8,6 +8,8 @@
             <div class="navbar-nav">
                 <?php 
                 $current_page = basename($_SERVER['PHP_SELF']); // Get the current page name
+				
+				require('..\..\Backend\include\dbconnect-include.php');
                 ?>
                 <a class="nav-link <?php echo $current_page == 'home.php' ? 'active' : ''; ?>" href="..\..\Frontend\Home\Home.php">Home</a>
                 <a class="nav-link <?php echo $current_page == 'search.php' ? 'active' : ''; ?>" href="..\..\Frontend\Search\search.php">Search</a>

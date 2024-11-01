@@ -291,6 +291,11 @@ p [id="result"] {
 }
 
 </style>
+<?php
+require('..\..\Backend\include\dbconnect-include.php');
+
+$connect->close();
+?>
 </head>
 <body>
 <div class="container">
