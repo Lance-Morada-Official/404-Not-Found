@@ -13,14 +13,14 @@
     echo "Private key: <br> $privateKey <br>";
 
     //save the private key in a .pem file
-    //file_put_contents('resources/securepay_private_key.pem', $privateKey);
+    file_put_contents('resources/securepay_private_key.pem', $privateKey);
 
     //extract the public key from the resource
     $publicKey = openssl_pkey_get_details($resource)['key'];
     echo "Public key: <br> $publicKey <br>";
 
     //save the public key in a .pem file
-    //file_put_contents('resources/securepay_public_key.pem', $publicKey);
+    file_put_contents('resources/securepay_public_key.pem', $publicKey);
 
     echo "Public and Private keys successfully generated and saved.\n";
 ?>
