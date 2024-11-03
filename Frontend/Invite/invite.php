@@ -14,7 +14,6 @@ require('..\..\Backend\include\session-include.php');
 require('..\..\Backend\include\dbconnect-include.php');
 require('..\..\Backend\Invite\invitebackend.php');
 
-
 $connect->close();
 ?>
     <div style="max-width: 720px; margin: 0 auto; padding: 24px;">
