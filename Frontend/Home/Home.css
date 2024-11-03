@@ -1,37 +1,77 @@
 /* General Styles */
 body {
-    background: url('Ayaka_2.jpg') rgba(0, 0, 0, 0.6);
     background-blend-mode: darken;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     color: #eaeaea;
-    overflow: hidden; /* Prevents scrollbar on the main screen */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
 /* Invite Section */
 .custom-container-invites {
     background-color: #ffffff;
-    height: 100vh;
-    overflow-y: auto; /* Allows scrolling within the invite section */
+    height: 100vh; /* Full height of the viewport */
+    overflow-y: auto;
     border-right: 1px solid #e0e0e0;
-    margin-left: 0; /* Removes left space */
-    width: 40vh; /* Fixed width for the invite section */
-    box-sizing: border-box;
-    position: relative;
+    width: 100%;
+    padding: 20px; /* Added padding to the invite section */
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Title and Subtitle Styles */
+.custom-container-invites h1 {
+    color: #333333; /* Darker color for better contrast */
+    font-size: 2rem; /* Adjusted size for the title */
+    margin-bottom: 10px; /* Space below the title */
 }
 
 .subtitle {
-    color: #ff8c00;
+    color: #ff8c00; /* Maintain your original color */
+    font-size: 1.2rem; /* Slightly larger for emphasis */
+    margin-bottom: 20px; /* Space below the subtitle */
 }
 
+/* Horizontal Line Below Title */
+.transactions-heading {
+    position: relative; /* To position the line relative to the heading */
+    display: inline-block; /* Limit the width of the line to the heading */
+    margin-bottom: 20px; /* Add space below the heading for aesthetics */
+}
+
+.transactions-heading h1 {
+    margin-bottom: 0; /* Remove margin to avoid space between title and line */
+}
+
+.transactions-heading::after {
+    content: "";
+    display: block;
+    height: 2px; /* Height of the line */
+    background-color: #ff8c00; /* Color of the line */
+    width: 100%; /* Full width of the heading */
+    position: absolute;
+    left: 0; /* Align to the left */
+    bottom: -10px; /* Space between the title and line */
+}
+
+/* Card Styles */
 .invite-card {
     background-color: #00bcd4;
     color: #ffffff;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Increased space between cards */
     display: flex;
     align-items: center;
+    padding: 15px; /* Padding inside the card for better spacing */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for cards */
+}
+
+.invite-card:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
 }
 
 .invite-buttons {
@@ -40,44 +80,48 @@ body {
     gap: 8px;
 }
 
-.btn-accept, .btn-decline {
+/* Button Styles */
+.btn-accept,
+.btn-decline {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
     color: #ffffff;
+    transition: color 0.2s; /* Smooth color transition */
 }
 
 .btn-accept:hover {
-    color: #4caf50;
+    color: #4caf50; /* Green on hover */
 }
 
 .btn-decline:hover {
-    color: #f44336;
+    color: #f44336; /* Red on hover */
 }
 
 /* On-Going Transactions Section */
 .custom-container-transactions {
-    height: 80vh;
+    height: 80vh; /* Take 80% of the viewport height */
+    min-height: 600px; /* Minimum height to avoid shrinking too much */
+    max-height: calc(100vh - 100px); /* Ensure it doesn't exceed the viewport */
     background-color: #696871;
-    flex-grow: 1; /* Allows it to fill the remaining space */
-    max-width: 100vh; /* Optional: Set a max width for centering */
-    overflow-y: auto; /* Allows scrolling within the transactions section */
-    margin: 5vh; /* Centers container horizontally in remaining space */
+    flex-grow: 1;
+    overflow-y: auto; /* Allow scrolling for overflowing content */
+    margin: 5vh;
     margin-bottom: 10vh;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    position: relative;
+    padding: 20px; /* Added padding for improved spacing */
 }
 
 .transaction-card {
     background-color: #ffffff;
     border-radius: 8px;
     display: flex;
-    align-items: stretch; /* Change to stretch to allow labels to grow */
-    margin-bottom: 2%;
-    height: 15%; /* Keep height as it is */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    margin-bottom: 20px; /* Increased space between cards */
+    height: 120px; /* Adjusted height */
+    box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.2);
 }
 
 .transaction-label {
@@ -85,12 +129,11 @@ body {
     color: #ffffff;
     text-align: center;
     font-weight: bold;
-    padding: 5% 0; /* Padding can remain as is */
     border-radius: 8px 0 0 8px;
-    height: 100%; /* Make the height 100% to fill the card */
-    display: flex; /* Use flex to center content */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    height: 100%; /* Ensure it fills the full height of the card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .selling-label {
@@ -101,50 +144,49 @@ body {
     background-color: #4caf50;
 }
 
-
 .transaction-info {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 15px;
+    flex-wrap: wrap; /* Allow wrapping of text */
 }
 
 .transaction-user {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px; /* Increased gap between icon and text */
 }
 
-.user-icon {
-    background-color: #cfd8dc;
-    border-radius: 50%;
-    font-size: 1.5em;
-    width: 50px;
-    height: 50px;
+.transaction-user div {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #455a64;
+    flex-direction: column; /* Stack username and user ID vertically */
+    gap: 5px; /* Add space between username and user ID */
+}
+
+.transaction-info p {
+    color: black;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
 }
 
 .transaction-due {
-    color: #4caf50;
-    font-weight: bold;
+    color: #f44336; /* Change color for due text */
 }
 
-/* Visible Scrollbars for Invite and Transactions sections */
-.custom-container-invites::-webkit-scrollbar,
-.custom-container-transactions::-webkit-scrollbar {
-    width: 8px;
-}
-
-.custom-container-invites::-webkit-scrollbar-thumb,
-.custom-container-transactions::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 4px;
-}
-
-.custom-container-invites::-webkit-scrollbar-track,
-.custom-container-transactions::-webkit-scrollbar-track {
-    background-color: #e0e0e0;
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* Stack the invites and transactions sections */
+    .container-fluid .row {
+        flex-direction: column-reverse;
+    }
+    .col-md-3 {
+        order: 2;
+    }
+    .col-md-9 {
+        order: 1;
+    }
+    .custom-container-invites, .custom-container-transactions {
+        margin: 0; /* Remove margin for mobile view */
+    }
 }

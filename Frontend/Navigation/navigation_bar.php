@@ -5,7 +5,7 @@
             <img src="..\..\path\to\profile_pictures\default-profile.png" alt="Profile Picture" class="profile-picture">
             <div class="profile-info ms-3">
                 <div class="username"><?php echo htmlspecialchars($username ?? 'Username'); ?></div>
-                <div class="user-id"><?php echo htmlspecialchars($user_id ?? 'User ID'); ?></div>
+                <div class="user-id"><?php echo htmlspecialchars($user_id ?? 'User  ID'); ?></div>
             </div>
         </div>
 
@@ -13,6 +13,11 @@
         <div class="trade-button-container">
             <a href="..\..\Frontend\Trade\trade.php" class="trade-button">Trade</a>
         </div>
+
+        <!-- Toggle Button for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- Navigation Links and Account Balance on the Right -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">

@@ -11,17 +11,12 @@
     <title>Navigation Bar Test</title>
 </head>
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; 
-    require('..\..\Backend\include\session-include.php');
-    require('..\..\Backend\include\dbconnect-include.php');
-    require('..\..\Backend\Invite\invitebackend.php');
-    ?>
+    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
     
-
     <div class="container-fluid">
         <div class="row vh-90">
             <!-- Left Column: Trade Invites -->
-            <div class="col-md-3">
+            <div class="col-md-3 p-0">
                 <div class="container custom-container-invites">
                     <h1>Invites</h1>
                     <p class="subtitle">Sell to a Buyer</p>
@@ -61,7 +56,9 @@
             <!-- Right Column: On-Going Transactions -->
             <div class="col-md-9 d-flex justify-content-center align-items-center">
                 <div class="container custom-container-transactions">
-                    <h1>On-Going Transactions</h1>
+                    <div class="transactions-heading">
+                        <h1>On-Going Transactions</h1>
+                    </div>
 
                     <!-- Example Transactions -->
                     <div class="transaction-card selling">

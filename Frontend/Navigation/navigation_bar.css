@@ -116,3 +116,22 @@
     font-weight: normal;
     color: gray;
 }
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .trade-button-container {
+        position: relative;
+        left: 0;
+        transform: none;
+        margin: 0 auto;
+    }
+    .navbar-nav {
+        flex-direction: column;
+    }
+    .navbar-nav .nav-link {
+        padding: 10px;
+    }
+    .account-balance {
+        margin-bottom: 10px;
+    }
+}
