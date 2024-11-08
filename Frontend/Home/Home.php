@@ -33,9 +33,17 @@
                         <div class="row mt-3">
                             <div class="col-12 mb-2">
                                 <div class="card invite-card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Username: <?php echo $invite['username']; ?></h5>
-                                        <p class="card-text">ID: <?php echo $invite['id']; ?></p>
+                                    <div class="card-body d-flex align-items-center">
+                                        <!-- Profile Image Template -->
+                                        <div class="profile-image me-3">
+                                            <img src="path/to/profile-image-placeholder.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
+                                        </div>
+                                        <!-- Username and ID -->
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title mb-1"><?= $invite['username']; ?></h5>
+                                            <p class="card-text mb-0"><?= $invite['id']; ?></p>
+                                        </div>
+                                        <!-- Accept and Decline Buttons -->
                                         <form method="post" class="invite-buttons">
                                             <button class="btn btn-accept" name="action" value="accept">&#10003;</button>
                                             <button class="btn btn-decline" name="action" value="decline">&#10005;</button>
@@ -72,7 +80,10 @@
                         <span class="transaction-label selling-label">Selling</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
-                                <span class="user-icon">A</span>
+                                <!-- Profile Image Template -->
+                                <div class="profile-image me-3">
+                                    <img src="path/to/profile-image-placeholder.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
+                                </div>
                                 <div>
                                     <p>Username</p>
                                     <p>User ID</p>
@@ -86,7 +97,10 @@
                         <span class="transaction-label buying-label">Buying</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
-                                <span class="user-icon">A</span>
+                                <!-- Profile Image Template -->
+                                <div class="profile-image me-3">
+                                    <img src="path/to/profile-image-placeholder.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
+                                </div>
                                 <div>
                                     <p>Username</p>
                                     <p>User ID</p>
@@ -99,5 +113,18 @@
             </div>
         </div>
     </div>
+    <script>
+    // Limit window size on resize
+    window.addEventListener('resize', function() {
+        // Get the current width and height
+        const maxWidth = 1024;
+        const maxHeight = 800;
+
+        // Resize the window if it's too large
+        if (window.innerWidth > maxWidth || window.innerHeight > maxHeight) {
+            window.resizeTo(Math.min(window.innerWidth, maxWidth), Math.min(window.innerHeight, maxHeight));
+        }
+    });
+</script>
 </body>
 </html>

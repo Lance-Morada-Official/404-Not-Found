@@ -11,7 +11,7 @@
 
         <!-- "Trade" Button Centered -->
         <div class="trade-button-container">
-            <a href="..\..\Frontend\Trade\trade.php" class="trade-button">Trade</a>
+            <a href="..\..\Frontend\Invite\invite.php" class="trade-button">Trade</a>
         </div>
 
         <!-- Toggle Button for Mobile View -->
@@ -27,16 +27,20 @@
                     <span>Home</span>
                 </a>
                 <a class="nav-link" href="..\..\Frontend\Search\search.php">
-                    <img src="..\..\path\to\icons\search-icon.png" alt="Search" class="nav-icon">
-                    <span>Search</span>
+                    <img src="..\..\path\to\icons\search-icon.png" alt="Add" class="nav-icon">
+                    <span>Add</span>
                 </a>
-                <a class="nav-link" href="..\..\Frontend\Messages\message.php">
-                    <img src="..\..\path\to\icons\message-icon.png" alt="Messages" class="nav-icon">
-                    <span>Messages</span>
+                <a class="nav-link" href="..\..\Frontend\Friends\friends.php">
+                    <img src="..\..\path\to\icons\message-icon.png" alt="Friends" class="nav-icon">
+                    <span>Friends</span>
                 </a>
                 <a class="nav-link" href="..\..\Frontend\Profile\profile.php">
                     <img src="..\..\path\to\icons\profile-icon.png" alt="Profile" class="nav-icon">
                     <span>Profile</span>
+                </a>
+                <a class="nav-link" href="..\..\Frontend\Profile\profile.php">
+                    <img src="..\..\path\to\icons\profile-icon.png" alt="Notification" class="nav-icon">
+                    <span>Notification</span>
                 </a>
             </div>
 
@@ -44,7 +48,7 @@
             <span class="account-balance me-3">$<?php echo number_format($account_balance ?? 0, 2); ?></span>
             <a class="nav-link" href="..\..\Frontend\Wallet\wallet.php">
                 <img src="..\..\path\to\icons\wallet-icon.png" alt="Wallet" class="nav-icon">
-                <span>Wallet</span>
+            
             </a>
         </div>
     </div>
