@@ -13,26 +13,39 @@ body {
 /* Invite Section */
 .custom-container-invites {
     background-color: #ffffff;
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh;
     overflow-y: auto;
     border-right: 1px solid #e0e0e0;
-    padding: 20px; 
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important; /* Remove all padding */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
+}
+
+/* Remove default margin and padding from Bootstrap .row */
+.custom-container-invites .row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Remove padding and margin from .col-12 */
+.custom-container-invites .row .col-12 {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Title and Subtitle Styles */
 .custom-container-invites h1 {
     color: #333333;
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 5%;
+    margin-left: 3%;
 }
 
 .subtitle {
     color: #ff8c00;
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
+    margin-left: 3%;
 }
 
 /* Horizontal Line Below Title */
@@ -62,27 +75,29 @@ body {
 .invite-card {
     background-color: #00bcd4;
     color: #ffffff;
-    border-radius: 8px;
-    margin-bottom: 15px;
+    margin: 0 !important; /* Remove margin */
+    padding: 2% !important; /* Adjust padding as needed */
     display: flex;
     align-items: center;
-    padding: 15px;
-    transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0px;
+    width: 100%; /* Ensure cards take up full width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.invite-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+/* Ensure no space between cards */
+.custom-container-invites .row .col-12 {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
+/* Button Styles */
 .invite-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 8px;
 }
 
-/* Button Styles */
 .btn-accept,
 .btn-decline {
     background: none;
@@ -122,7 +137,7 @@ body {
     display: flex;
     align-items: center;
     height: 120px;
-    box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .transaction-label {

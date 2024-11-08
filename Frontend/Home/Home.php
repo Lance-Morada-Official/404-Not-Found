@@ -12,52 +12,41 @@
 </head>
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
-    
+
     <div class="container-fluid">
         <div class="row vh-90">
             <!-- Left Column: Trade Invites -->
-            <div class="col-12 col-md-3 p-0"> <!-- Updated to col-12 to ensure full width on smaller screens -->
+            <div class="col-12 col-md-3 p-0"> 
                 <div class="container custom-container-invites">
                     <h1>Invites</h1>
                     <p class="subtitle">Sell to a Buyer</p>
 
-                    <!-- Temporarily disable database connection and use sample data -->
-                    <!-- <?php if ($invites->num_rows > 0): ?>
-                        <?php while ($row = $invites->fetch_assoc()): ?> -->
+                    <?php 
+                    // Simulate database data with an array
+                    $invites = [
+                        ["username" => "SampleUser1", "id" => "12345"],
+                        ["username" => "SampleUser2", "id" => "67890"]
+                    ];
 
-                    <!-- Example Placeholder Invite Cards -->
-                    <div class="row mt-3">
-                        <div class="col-12 mb-2">
-                            <div class="card invite-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Username: SampleUser1</h5>
-                                    <p class="card-text">ID: 12345</p>
-                                    <form method="post" class="invite-buttons">
-                                        <button class="btn btn-accept" name="action" value="accept">&#10003;</button>
-                                        <button class="btn btn-decline" name="action" value="decline">&#10005;</button>
-                                    </form>
+                    // Loop through invites and create cards
+                    foreach ($invites as $invite): ?>
+                        <div class="row mt-3">
+                            <div class="col-12 mb-2">
+                                <div class="card invite-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Username: <?php echo $invite['username']; ?></h5>
+                                        <p class="card-text">ID: <?php echo $invite['id']; ?></p>
+                                        <form method="post" class="invite-buttons">
+                                            <button class="btn btn-accept" name="action" value="accept">&#10003;</button>
+                                            <button class="btn btn-decline" name="action" value="decline">&#10005;</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach; ?>
 
-                    <div class="row mt-3">
-                        <div class="col-12 mb-2">
-                            <div class="card invite-card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Username: SampleUser2</h5>
-                                    <p class="card-text">ID: 67890</p>
-                                    <form method="post" class="invite-buttons">
-                                        <button class="btn btn-accept" name="action" value="accept">&#10003;</button>
-                                        <button class="btn btn-decline" name="action" value="decline">&#10005;</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <?php endwhile; ?>
-                    <?php else: ?>
+                    <?php if (empty($invites)): ?>
                         <div class="row mt-3">
                             <div class="col-12 mb-2">
                                 <div class="card">
@@ -67,12 +56,12 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endif; ?> -->
+                    <?php endif; ?>
                 </div>
             </div>
 
             <!-- Right Column: On-Going Transactions -->
-            <div class="col-12 col-md-9 d-flex justify-content-center align-items-center"> <!-- Updated for full width on smaller screens -->
+            <div class="col-12 col-md-9 d-flex justify-content-center align-items-center">
                 <div class="container custom-container-transactions">
                     <div class="transactions-heading">
                         <h1>On-Going Transactions</h1>
