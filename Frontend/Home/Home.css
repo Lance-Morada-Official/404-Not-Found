@@ -5,8 +5,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     color: #eaeaea;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Invite Section */
@@ -15,45 +16,46 @@ body {
     height: 100vh; /* Full height of the viewport */
     overflow-y: auto;
     border-right: 1px solid #e0e0e0;
-    width: 100%;
-    padding: 20px; /* Added padding to the invite section */
+    padding: 20px; 
     margin: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
 }
 
 /* Title and Subtitle Styles */
 .custom-container-invites h1 {
-    color: #333333; /* Darker color for better contrast */
-    font-size: 2rem; /* Adjusted size for the title */
-    margin-bottom: 10px; /* Space below the title */
+    color: #333333;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .subtitle {
-    color: #ff8c00; /* Maintain your original color */
-    font-size: 1.2rem; /* Slightly larger for emphasis */
-    margin-bottom: 20px; /* Space below the subtitle */
+    color: #ff8c00;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 /* Horizontal Line Below Title */
 .transactions-heading {
-    position: relative; /* To position the line relative to the heading */
-    display: inline-block; /* Limit the width of the line to the heading */
-    margin-bottom: 20px; /* Add space below the heading for aesthetics */
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 .transactions-heading h1 {
-    margin-bottom: 0; /* Remove margin to avoid space between title and line */
+    margin-bottom: 0;
 }
 
 .transactions-heading::after {
     content: "";
     display: block;
-    height: 2px; /* Height of the line */
-    background-color: #ff8c00; /* Color of the line */
-    width: 100%; /* Full width of the heading */
+    height: 2px;
+    background-color: #ffffff;
+    width: 100%;
     position: absolute;
-    left: 0; /* Align to the left */
-    bottom: -10px; /* Space between the title and line */
+    left: 0;
+    bottom: -10px;
+    border-radius: 8px;
 }
 
 /* Card Styles */
@@ -61,17 +63,17 @@ body {
     background-color: #00bcd4;
     color: #ffffff;
     border-radius: 8px;
-    margin-bottom: 15px; /* Increased space between cards */
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    padding: 15px; /* Padding inside the card for better spacing */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Soft shadow for cards */
+    padding: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .invite-card:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .invite-buttons {
@@ -88,49 +90,47 @@ body {
     font-size: 1.5em;
     cursor: pointer;
     color: #ffffff;
-    transition: color 0.2s; /* Smooth color transition */
+    transition: color 0.2s;
 }
 
 .btn-accept:hover {
-    color: #4caf50; /* Green on hover */
+    color: #4caf50;
 }
 
 .btn-decline:hover {
-    color: #f44336; /* Red on hover */
+    color: #f44336;
 }
 
 /* On-Going Transactions Section */
 .custom-container-transactions {
-    height: 80vh; /* Take 80% of the viewport height */
-    min-height: 600px; /* Minimum height to avoid shrinking too much */
-    max-height: calc(100vh - 100px); /* Ensure it doesn't exceed the viewport */
+    height: 80vh;
+    min-height: 600px;
+    max-height: calc(100vh - 100px);
     background-color: #696871;
     flex-grow: 1;
-    overflow-y: auto; /* Allow scrolling for overflowing content */
+    overflow-y: auto;
     margin: 5vh;
     margin-bottom: 10vh;
-    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    padding: 20px; /* Added padding for improved spacing */
+    padding-top: 2%;
 }
 
+/* Transaction Card Styles */
 .transaction-card {
     background-color: #ffffff;
-    border-radius: 8px;
+    margin-bottom: 1px;
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Increased space between cards */
-    height: 120px; /* Adjusted height */
+    height: 120px;
     box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.2);
 }
 
 .transaction-label {
-    width: 100px;
+    width: 15%;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
-    border-radius: 8px 0 0 8px;
-    height: 100%; /* Ensure it fills the full height of the card */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,46 +147,79 @@ body {
 .transaction-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 15px;
-    flex-wrap: wrap; /* Allow wrapping of text */
+    flex-wrap: wrap;
+}
+
+.transaction-due {
+    color: #f44336;
+    margin: 0;
 }
 
 .transaction-user {
     display: flex;
     align-items: center;
-    gap: 20px; /* Increased gap between icon and text */
+    gap: 20px;
 }
 
 .transaction-user div {
     display: flex;
-    flex-direction: column; /* Stack username and user ID vertically */
-    gap: 5px; /* Add space between username and user ID */
+    flex-direction: column;
+    gap: 5px;
 }
 
 .transaction-info p {
     color: black;
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-}
-
-.transaction-due {
-    color: #f44336; /* Change color for due text */
+    margin: 0;
+    padding: 0;
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .custom-container-invites, .custom-container-transactions {
+        margin: 10px; /* Reduce margin on medium screens */
+    }
+
+    .transaction-card {
+        flex-direction: column;
+        height: auto; /* Allow card to grow with content */
+    }
+
+    .transaction-info {
+        flex-direction: column;
+    }
+
+    .transaction-label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .transaction-user {
+        gap: 10px;
+    }
+}
+
 @media (max-width: 768px) {
     /* Stack the invites and transactions sections */
     .container-fluid .row {
         flex-direction: column-reverse;
     }
-    .col-md-3 {
-        order: 2;
+
+    .col-md-3, .col-md-9 {
+        width: 100%; /* Full width for both columns on smaller screens */
     }
-    .col-md-9 {
-        order: 1;
-    }
+
     .custom-container-invites, .custom-container-transactions {
-        margin: 0; /* Remove margin for mobile view */
+        padding: 10px; /* Reduce padding for mobile screens */
+    }
+
+    .invite-card {
+        padding: 10px; /* Less padding for mobile */
+    }
+
+    .transactions-heading h1 {
+        font-size: 1.5rem; /* Smaller font size on mobile */
     }
 }
