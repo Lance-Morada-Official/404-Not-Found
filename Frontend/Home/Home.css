@@ -8,7 +8,15 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    
+    animation: fadeInPage 1s ease-in-out;
+}
+a {
+    text-decoration: none;
+}
+
+/* Optional: Add hover effect for better UX */
+a:hover {
+    text-decoration: none; /* Ensure underline doesn't appear on hover */
 }
 
 /* Invite Section */
@@ -83,6 +91,7 @@ body {
 }
 
 /* Invite Card Styles */
+/* Hover effect for Invite Card */
 .invite-card {
     background-color: #00bcd4;
     color: #ffffff;
@@ -91,14 +100,32 @@ body {
     padding: 1%;
     width: 100%;
     box-sizing: border-box;
-    margin: 0 !important; /* Ensures no extra spacing */
+    margin: 0 !important;
     border-radius: 0%;
     margin-bottom: 1px;
-    justify-content: space-between; /* Distribute space between items dynamically */
-    white-space: nowrap; /* Prevents the card from resizing with long text */
-    overflow: hidden; /* Ensures that text won't cause overflow */
-    text-overflow: ellipsis; /* Adds '...' for overflowed text */
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     box-shadow: 5px 5px 15px rgba(0.1, 0.1, 0.1, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animate scaling and shadow */
+}
+
+
+/* Add an animation for loading the invites */
+.invite-card {
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Profile Image - Align it to the far left */
@@ -182,6 +209,23 @@ body {
     transition: color 0.2s;
 }
 
+.btn-accept, .btn-decline {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth color and scale transitions */
+}
+
+.btn-accept:hover, .btn-decline:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+.btn-accept:active, .btn-decline:active {
+    transform: scale(0.95); /* Shrink button on click */
+}
+
+/* Specific colors for hover states */
 .btn-accept:hover {
     color: #4caf50;
 }
@@ -212,6 +256,28 @@ body {
     align-items: center;
     height: 120px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Start invisible */
+    transform: translateX(-20px); /* Start off-screen */
+    animation: slideIn 0.6s ease-out forwards; /* Animate sliding in */
+}
+
+/* Keyframes for sliding in */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Start from the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Slide to original position */
+    }
+}
+
+/* Add hover effects on transaction cards */
+.transaction-card:hover {
+    transform: scale(1.03); /* Slightly scale the card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly increase shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .transaction-label {
@@ -409,5 +475,13 @@ body {
     /* Adjust margins for smaller screens */
     .invite-card .card-body .flex-grow-1 {
         margin-left: 0;
+    }
+}
+@keyframes fadeInPage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

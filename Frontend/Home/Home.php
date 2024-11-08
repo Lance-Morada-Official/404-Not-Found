@@ -76,7 +76,7 @@
                     </div>
 
                     <!-- Example Transactions -->
-                    <div class="transaction-card selling">
+                    <a href="transaction-detail.php" class="transaction-card selling">
                         <span class="transaction-label selling-label">Selling</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
@@ -91,9 +91,9 @@
                             </div>
                             <p class="transaction-due">Due in 1 M : 24 D : 54 M : 59 S</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="transaction-card buying">
+                    <a href="transaction-detail.php" class="transaction-card buying">
                         <span class="transaction-label buying-label">Buying</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
@@ -108,11 +108,12 @@
                             </div>
                             <p class="transaction-due">Due in 1 M : 24 D : 54 M : 59 S</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
     // Limit window size on resize
     window.addEventListener('resize', function() {
@@ -125,6 +126,6 @@
             window.resizeTo(Math.min(window.innerWidth, maxWidth), Math.min(window.innerHeight, maxHeight));
         }
     });
-</script>
+    </script>
 </body>
 </html>
