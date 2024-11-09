@@ -15,9 +15,9 @@
     <body>
 
         <?php
-            if(isset($_POST['Encrypt'])){
+            if(isset($_POST['encrypt'])){
                 encryptData($_POST['encrypt_message'], $publicKey);
-            }else if(isset($_POST['Decrypt'])){
+            }else if(isset($_POST['decrypt'])){
                 decryptData($_POST['decrypt_message'], $privateKey);
             }
         ?>
