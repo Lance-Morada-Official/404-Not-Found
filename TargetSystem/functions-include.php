@@ -1,5 +1,5 @@
 <?php
-
+    //target system functions-include file
 
     function encryptData($data, $publicKey){
         // Get the public key .pem file
@@ -13,7 +13,7 @@
         echo "Encrypted Data: " . $encryptedDataBase64 . "\n";
     }
 
-    function decryptData($privateKey, $encryptedDataBase64){
+    function decryptData($encryptedDataBase64, $privateKey){
         // Get the private key .pem file
         $privateKey = file_get_contents('resources/securepay_private_key.pem');
 
