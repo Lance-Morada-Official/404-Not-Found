@@ -13,96 +13,77 @@
     </style>
     <title>Navigation Bar Test</title>
 </head>
-<!-- <body class="vh-100 overflow-hidden"> -->
-<body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
+<body class="vh-100 overflow-hidden">
     <?php 
 	include '..\..\Frontend\Navigation\navigation_bar.php'; 
 	require('..\..\Backend\include\session-include.php');
 	require('..\..\Backend\include\dbconnect-include.php');
 	require('..\..\Backend\Friends\friendbackend.php');
-
-	
 	$connect->close();
 	?>
 	
-	<div style="max-width: 720px; margin: 0 auto; padding: 24px;">
-        <h1 style="color: #fff; font-size: 24px; font-weight: bold; margin-bottom: 24px;">Friends</h1>
+	<div class="container">
+        <h1>Friends</h1>
 
-        <div style="background-color: #ffffff; border-radius: 10px; padding: 24px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="section">
             <div style="margin-bottom: 24px;">
-			<form method="get">
-                <input type="text" name='search'  placeholder="Search ID or Username" style="width: 96%; padding: 12px; border: 1px solid #d1d5db; border-radius: 10px;" value="<?php echo htmlspecialchars($search); ?>">
-            </form>
-			</div>
-			
-			<!-- Pendings -->
-            <h2 style="font-size: 18px; font-weight: bold; margin-bottom: 24px;">Pending Request:</h2>
-
-            <div style="margin-bottom: 24px;">
-			
-			
-                
-			<?php if ($fetchallp->num_rows > 0): ?>
-				<?php while ($row = $fetchallp->fetch_assoc()): ?>
-                <div style="background-color: #f7f7f7; padding: 16px; border-radius: 10px; margin-bottom: 16px;">
-                    <div style="display: flex; align-items: center;">
-                        <div style="width: 40px; height: 40px; background-color: #d1d5db; border-radius: 50%; margin-right: 16px;"></div>
-                        <div>
-                            <p style="font-weight: bold;">Username: <?php echo htmlspecialchars($row['username']); ?></p>
-                            <p style="font-size: 14px; color: #6b7280;">User ID: <?php echo htmlspecialchars($row['user_id']); ?></p>
-                        </div>
-                    </div>
-					<form method='POST'>
-					<input type="hidden" name="sender" value="<?php echo $row['user_id']; ?>">
-                    <button style="background-color: green; color: #ffffff; padding: 12px 24px; border: none; border-radius: 210px; cursor: pointer;" name='action' value='accept'>Accept</button>
-					<button style="background-color: red; color: #ffffff; padding: 12px 24px; border: none; border-radius: 210px; cursor: pointer;" name='action' value='decline'>Decline</button>
-					</form>
-				</div>
-				<?php endwhile; ?>
-			<?php else: ?>
-				<div style="display: flex; align-items: center;">
-                        <div style="width: 40px; height: 40px; background-color: #d1d5db; border-radius: 50%; margin-right: 16px;"></div>
-                        <div>
-                            <p style="font-weight: bold;">------No Pending Request------</p>
-                        </div>
-                </div>
-			<?php endif; ?>
-				
+                <form method="get">
+                    <input type="text" name='search' placeholder="Search ID or Username" value="<?php echo htmlspecialchars($search); ?>">
+                </form>
             </div>
 			
-			<!-- Friends -->
-			<h2 style="font-size: 18px; font-weight: bold; margin-bottom: 24px;">Results:</h2>
-
+            <h2 class="pending-title">Pending Request:</h2>
             <div style="margin-bottom: 24px;">
-			
-                
-			<?php if ($fetchallf->num_rows > 0): ?>
-				<?php while ($row = $fetchallf->fetch_assoc()): ?>
-                <div style="background-color: #f7f7f7; padding: 16px; border-radius: 10px; margin-bottom: 16px;">
-                    <div style="display: flex; align-items: center;">
-                        <div style="width: 40px; height: 40px; background-color: #d1d5db; border-radius: 50%; margin-right: 16px;"></div>
-                        <div>
-                            <p style="font-weight: bold;">Username: <?php echo htmlspecialchars($row['username']); ?></p>
-                            <p style="font-size: 14px; color: #6b7280;">User ID: <?php echo htmlspecialchars($row['user_id']); ?></p>
+                <?php if ($fetchallp->num_rows > 0): ?>
+                    <?php while ($row = $fetchallp->fetch_assoc()): ?>
+                        <div class="request-box">
+                            <div class="user-info">
+                                <div></div>
+                                <div>
+                                    <p>Username: <?php echo htmlspecialchars($row['username']); ?></p>
+                                    <p class="user-id">User ID: <?php echo htmlspecialchars($row['user_id']); ?></p>
+                                </div>
+                            </div>
+                            <form method='POST'>
+                                <input type="hidden" name="sender" value="<?php echo $row['user_id']; ?>">
+                                <button class="accept-btn" name='action' value='accept'>Accept</button>
+                                <button class="decline-btn" name='action' value='decline'>Decline</button>
+                            </form>
                         </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <div class="no-result">
+                        <div></div>
+                        <div><p>------No Pending Request------</p></div>
                     </div>
-					<form method='POST'>
-					<input type="hidden" name="friendid" value="<?php echo htmlspecialchars($row['user_id']); ?>">
-                    <button style="background-color: #5d57d9; color: #ffffff; padding: 12px 24px; border: none; border-radius: 210px; cursor: pointer;" name='unfriend' type='submit'>Unfriend</button>
-					</form>
-				</div>
-				<?php endwhile; ?>
-			<?php else: ?>
-				<div style="display: flex; align-items: center;">
-                        <div style="width: 40px; height: 40px; background-color: #d1d5db; border-radius: 50%; margin-right: 16px;"></div>
-                        <div>
-                            <p style="font-weight: bold;">------No Result Found------</p>
-                        </div>
-                </div>
-			<?php endif; ?>
-				
+                <?php endif; ?>
             </div>
-
+			
+            <h2 class="results-title">Results:</h2>
+            <div style="margin-bottom: 24px;">
+                <?php if ($fetchallf->num_rows > 0): ?>
+                    <?php while ($row = $fetchallf->fetch_assoc()): ?>
+                        <div class="friend-box">
+                            <div class="user-info">
+                                <div></div>
+                                <div>
+                                    <p>Username: <?php echo htmlspecialchars($row['username']); ?></p>
+                                    <p class="user-id">User ID: <?php echo htmlspecialchars($row['user_id']); ?></p>
+                                </div>
+                            </div>
+                            <form method='POST'>
+                                <input type="hidden" name="friendid" value="<?php echo htmlspecialchars($row['user_id']); ?>">
+                                <button class="unfriend-btn" name='unfriend' type='submit'>Unfriend</button>
+                            </form>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <div class="no-result">
+                        <div></div>
+                        <div><p>------No Result Found------</p></div>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </body>

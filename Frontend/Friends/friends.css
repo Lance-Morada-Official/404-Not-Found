@@ -1,0 +1,101 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #161530;
+}
+
+h1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.container {
+    max-width: 100vh;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-height: 80vh; /* Set a maximum height */
+    max-width: 100vh;
+    overflow-y: auto; /* Adds vertical scroll when content overflows */
+}
+
+input[type="text"] {
+    width: 96%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+}
+
+.pending-title, .results-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.request-box, .friend-box {
+    background-color: #f7f7f7;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info div:first-child {
+    width: 40px;
+    height: 40px;
+    background-color: #d1d5db;
+    border-radius: 50%;
+    margin-right: 16px;
+}
+
+.user-info p {
+    font-weight: bold;
+}
+
+.user-id {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+button.accept-btn {
+    background-color: green;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 210px;
+    cursor: pointer;
+}
+
+button.decline-btn {
+    background-color: red;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 210px;
+    cursor: pointer;
+}
+
+button.unfriend-btn {
+    background-color: #5d57d9;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 210px;
+    cursor: pointer;
+}
+
+.no-result {
+    display: flex;
+    align-items: center;
+}

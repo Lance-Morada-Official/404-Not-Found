@@ -1,3 +1,10 @@
+/* Global font style */
+body {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 16px !important; /* Base font size */
+}
+
+/* Navbar styling */
 .custom-navbar {
     background-color: white;
     height: 64px;
@@ -7,21 +14,23 @@
     padding: 0 15px;
     box-shadow: 0px 4px 2px -2px gray;
     position: relative;
+    width: 100%;
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
 }
 
+/* Profile Info */
 .navbar-profile {
     display: flex;
     align-items: center;
     height: 100%;
+    flex-grow: 1; /* Allow profile section to take available space */
+    max-width: 35%; /* Limit profile width to prevent overlap */
+    flex-shrink: 1; /* Allow shrinking if needed */
+    justify-content: flex-start; /* Align profile to the left */
+    z-index: 2; /* Keep profile above other elements */
 }
 
-.profile-picture {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
+/* Profile Name and User ID */
 .profile-info {
     display: flex;
     flex-direction: column;
@@ -40,77 +49,108 @@
     color: gray;
 }
 
-/* Centering Trade Button and Removing White Space */
+/* Navbar */
+.navbar {
+    padding: 0;
+    margin: 0;
+}
+
+/* Trade Button */
 .trade-button-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    height: 100%;
+    flex-shrink: 0; /* Prevent shrinking */
+    min-width: 120px; /* Minimum width for button */
+    clear: both; /* Clear any floats */
+    z-index: 3; /* Keep the trade button on top of profile and links */
 }
 
 .trade-button {
     background-color: #ffc107;
     color: white;
-    padding: 0 15px;  /* Only horizontal padding */
-    height: 100%;  /* Full height of the navbar */
+    padding: 0 15px;
+    height: 100%;
     display: flex;
     align-items: center;
-    font-size: 16px;
+    justify-content: center;
+    font-size: 16px; /* Consistent font size */
     font-weight: bold;
     text-decoration: none;
-    border-radius: 0 0 8px 8px;  /* Rounded bottom corners */
+    border-radius: 0 0 8px 8px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
+    width: 20vh;
+    min-width: 120px; /* Prevent button from shrinking too much */
 }
 
+/* Hover effect */
 .trade-button:hover {
     background-color: #e0a800;
 }
 
+/* Navigation Links */
+/* Navigation Links */
 .navbar-nav {
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Align items to the start to avoid too much spacing */
     margin-right: 15px;
+    flex-grow: 2; /* Allow navbar links to grow */
+    max-width: 60%; /* Limit max width to prevent overlap */
+    position: relative;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    z-index: 1; /* Ensure navbar links are below profile and button */
 }
 
 .navbar-nav .nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 15px;
+    padding: 0 15px; /* Adjust padding if needed */
     color: black;
     text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Use inline-block for more control */
+}
+
+/* Underline for nav links inside the burger menu */
+.navbar-nav .nav-link {
+    border-bottom: 2px solid transparent;
 }
 
 .navbar-nav .nav-link:hover {
     color: #007bff;
+    transform: translateY(0); /* Remove the translateY effect to prevent text movement */
+    border-bottom: 2px solid #007bff; /* Keep the border on the bottom */
 }
 
-.navbar-nav .nav-icon {
-    width: 24px;
-    height: 24px;
-    transition: opacity 0.3s ease;
+/* Active link styles with glow effect */
+.navbar-nav .nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+    position: relative;
+    text-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Glowing effect */
 }
 
-.navbar-nav .nav-link span {
-    font-size: 12px;
-    margin-top: 2px;
-    color: black;
-}
 
-.navbar-nav .nav-link:hover .nav-icon {
-    opacity: 0.7;
-}
-
+/* Account Balance */
 .account-balance {
-    font-size: 16px;
+    font-size: 16px; /* Consistent font size */
     color: black;
     font-weight: bold;
-    margin-right: 15px;
+    position: relative;
+    display: inline-block; /* Ensure the text stays in one line */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    margin-left: 2%; /* Adjust to push the balance to the left */
+    padding: 0 15px; /* Ensure similar spacing as nav links */
+    align-items: center; /* Center balance text vertically */
 }
 
+/* Balance Label */
 .account-balance::before {
     content: 'Balance: ';
     font-weight: normal;
@@ -119,19 +159,85 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .trade-button-container {
-        position: relative;
-        left: 0;
-        transform: none;
-        margin: 0 auto;
-    }
-    .navbar-nav {
+    .custom-navbar {
         flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 15px;
+        flex-wrap: wrap; /* Allow wrapping of items */
+        position: relative; /* Ensure proper positioning */
     }
+
+    .navbar-profile {
+        display: none; /* Hide profile info in mobile view */
+    }
+
+    /* Trade Button Container */
+    .trade-button-container {
+        position: fixed; /* Make trade button stay fixed in place */
+        left: 50%;
+        transform: translateX(-50%); /* Keep it centered */
+        top: 0%; /* Vertically center the button with some margin */
+        z-index: 10; /* Keep button on top */
+        height: 59px;
+        width: 100%; /* Ensure button stays within the container */
+        max-width: 120px; /* Prevent resizing */
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: center;
+    }
+
+    .trade-button {
+        width: 100%; /* Ensure button stays within the container */
+        min-width: 120px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    /* Navbar-toggler (burger icon) position on the right */
+    .navbar-toggler {
+        position: absolute;
+        right: 15px; /* Move the icon to the right */
+        top: 15px; /* Align with the top */
+        background-color: transparent;
+        border: none;
+        z-index: 11; /* Ensure it's on top of other elements */
+    }
+
+    /* Navbar-nav (links) behavior when the burger icon is clicked */
+    .navbar-nav {
+        display: flex;
+        flex-direction: column; /* Align links vertically */
+        justify-content: flex-start; /* Align items to the left */
+        width: 100%; /* Ensure it takes full width */
+        position: relative; /* Fix the position below the navbar */
+        background-color: rgb(255, 255, 255); /* Add background to make links readable */
+        transition: left 0.3s ease; /* Smooth transition for sliding */
+        z-index: 0; /* Ensure it's below the profile and trade button */
+    }
+
+    /* Nav link style */
     .navbar-nav .nav-link {
-        padding: 10px;
+        padding: 5%;
+        text-align: left;
+        width: 100%; /* Ensure links take up full width */
+        border-bottom: 2px solid transparent; /* Default state without underline */
+        padding-bottom: 8px; /* Consistent padding for underline */
     }
-    .account-balance {
-        margin-bottom: 10px;
+
+    .navbar-nav .account-balance {
+        padding: 2%;
+        text-align: left;
+        width: 100%; /* Ensure links take up full width */
+    }
+
+    /* Show navbar links when burger icon is clicked */
+    .navbar-toggler.collapsed + .navbar-collapse {
+        left: 0; /* Slide in from the left */
+    }
+
+    /* Optional: Adjust navbar links when active */
+    .navbar-nav .nav-link.active {
+        background-color: #007bff;
+        color: white;
     }
 }
