@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="home.css"/>
     <link rel="stylesheet" href="../Navigation/navigation_bar.css">
-    <title>Navigation Bar Test</title>
+    <title>Home</title>
 </head>
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>

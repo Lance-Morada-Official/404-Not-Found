@@ -1,0 +1,51 @@
+.Details{
+    color: white;
+    visibility:visible;
+    display: show;
+
+}
+
+.Upload{
+
+    background-color: white;
+    padding: 2%;
+    min-height: 80vh;
+    max-height: 100vh;
+    overflow: auto;
+    position: relative;
+}
+
+.UploadBox{
+
+background-color: gray;
+display: grid;
+place-items: center;
+height: 30%;
+position: relative;
+
+}
+
+#file-upload{
+    align-items: center;
+}
+
+#btn-submit{
+    position:fixed;
+    bottom: 8%;
+    right: 8%;
+}
+
+@media (max-width: 992px){
+
+
+.Details{
+    visibility: hidden;
+    display: none;
+}
+
+.Upload{
+    height: calc(100vh - 60px) !important;
+    width: 100% !important;
+    margin: 0% !important;
+}
+}
