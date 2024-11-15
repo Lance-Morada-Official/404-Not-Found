@@ -1,0 +1,61 @@
+.Loading {
+    background-color: white;
+    padding: 2%;
+    width: 79%;
+    height: calc(96vh - 64px);
+    overflow: auto;
+    position: relative;
+}
+
+.spinner-container {
+    display: flex;           /* Align spinners in a row */
+    justify-content: center; /* Center them horizontally */
+    gap: 10px;               /* Add space between the spinners */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner-grow {
+    width: 2rem;  /* Set the size of each spinner */
+    height: 2rem;
+    animation: grow 1.5s ease-in-out infinite;  /* Default animation */
+}
+
+/* Delays for each spinner to create the sequential grow effect */
+.spinner-grow:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.spinner-grow:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.spinner-grow:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Animation to scale the spinner up */
+@keyframes grow {
+    0% {
+        transform: scale(0.5); /* Start smaller */
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1);   /* Grow to normal size */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.5); /* Shrink back */
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 1200px) {
+    .Loading {
+        height: calc(100vh - 60px) !important;
+        width: 100% !important;
+        margin: 0% !important;
+    }
+}

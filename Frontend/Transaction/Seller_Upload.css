@@ -1,18 +1,10 @@
-.Details{
-    color: white;
-    visibility:visible;
-    display: show;
-
-}
-
 .Upload{
 
     background-color: white;
     padding: 2%;
-    min-height: 80vh;
-    max-height: 100vh;
+    width: 79%;
+    height: calc(96vh - 64px);
     overflow: auto;
-    position: relative;
 }
 
 .UploadBox{
@@ -30,18 +22,13 @@ position: relative;
 }
 
 #btn-submit{
-    position:fixed;
-    bottom: 8%;
-    right: 8%;
+    position:absolute;
+    bottom: 3%;
+    right: 3%;
 }
 
-@media (max-width: 992px){
+@media (max-width: 1200px){
 
-
-.Details{
-    visibility: hidden;
-    display: none;
-}
 
 .Upload{
     height: calc(100vh - 60px) !important;
