@@ -1,11 +1,4 @@
-.Loading {
-    background-color: white;
-    padding: 2%;
-    width: 79%;
-    height: calc(96vh - 64px);
-    overflow: auto;
-    position: relative;
-}
+
 
 .Loading-Text{
 

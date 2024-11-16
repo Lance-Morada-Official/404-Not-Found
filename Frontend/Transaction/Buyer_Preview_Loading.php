@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="Buyer_Preview.css" />
     <link rel="stylesheet" href="Details.css" />
     <link rel="stylesheet" href="Loading.css" />
+    <link rel="stylesheet" href="BoxContainer.css" />
     <link rel="stylesheet" href="../Navigation/navigation_bar.css" />
     <title>Preview</title>
 </head>
@@ -54,7 +55,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-9 mt-3 ms-4 Loading">
+            <div class="col-lg-9 mt-3 ms-4 BoxContainer">
                 
             <div class = "Loading-Text mt-2">
                     <h1>Waiting for Seller to Upload.</h1>

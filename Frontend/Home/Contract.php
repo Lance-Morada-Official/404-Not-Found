@@ -126,8 +126,8 @@ body {
 </head>
 <body>
 <?php
-		require('..\..\Backend\include\session-include.php');
-		require('..\..\Backend\include\dbconnect-include.php');
+		//require('..\..\Backend\include\session-include.php');
+		//require('..\..\Backend\include\dbconnect-include.php');
 
 ?>
 <div class="container">

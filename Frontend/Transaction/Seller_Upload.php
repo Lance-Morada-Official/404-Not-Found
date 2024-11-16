@@ -15,6 +15,7 @@
     <!-- Custom CSS Files -->
     <link rel="stylesheet" href="Seller_Upload.css" />
     <link rel="stylesheet" href="Details.css" />
+    <link rel="stylesheet" href="BoxContainer.css" />
     <link rel="stylesheet" href="../Navigation/navigation_bar.css" />
     
     <title>Upload</title>
@@ -63,7 +64,7 @@
             </div>
 
             <!-- Right Column for File Upload -->
-            <div class="col-lg-9 mt-3 ms-4 Upload">
+            <div class="col-lg-9 mt-3 ms-4 BoxContainer">
                 <h1>Upload</h1>
 
                 <div class="mx-2 UploadBox">

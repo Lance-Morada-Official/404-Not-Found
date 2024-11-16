@@ -1,12 +1,3 @@
-.Upload{
-
-    background-color: white;
-    padding: 2%;
-    width: 79%;
-    height: calc(96vh - 64px);
-    overflow: auto;
-}
-
 .UploadBox{
 
 background-color: gray;
@@ -27,12 +18,3 @@ position: relative;
     right: 3%;
 }
 
-@media (max-width: 1200px){
-
-
-.Upload{
-    height: calc(100vh - 60px) !important;
-    width: 100% !important;
-    margin: 0% !important;
-}
-}
