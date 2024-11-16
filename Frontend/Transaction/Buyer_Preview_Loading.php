@@ -54,9 +54,27 @@
                 </div>
             </div>
 
-            <div class="col-lg-9 mt-3 ms-4 Preview">
+            <div class="col-lg-9 mt-3 ms-4 Loading">
                 
-           
+            <div class = "Loading-Text mt-2">
+                    <h1>Waiting for Seller to Upload.</h1>
+
+                 
+                    <div class="spinner-container">
+                     
+                        <div class="spinner-grow text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="spinner-grow text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+
+                        </div>
+                        <button type="button" id="btn-home" class="btn btn-secondary">Home</button>
+            </div>
         </div>
         </div>
     </div>
