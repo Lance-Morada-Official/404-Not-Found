@@ -1,0 +1,23 @@
+.UploadBox{
+
+    background-color: transparent;
+    border: 1px solid;
+    display: grid;
+    place-items: center;
+    height: 50%;
+    position: relative;
+    margin: 5%;
+    
+    }
+    
+    #file-upload{
+        align-items: center;
+    }
+    
+    
+    #upload-status {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        margin-top: 20px;
+    }
