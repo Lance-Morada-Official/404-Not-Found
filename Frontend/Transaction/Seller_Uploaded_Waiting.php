@@ -24,13 +24,11 @@
 
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     
-    <!-- Navigation Bar -->
     <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
 
     <div class="container-fluid">
         <div class="row">
             
-            <!-- Left Column for Buyer Details -->
             <div class="col-lg-2 mt-3 mb-3 ms-3 Details">
                 <div class="Details-Header">
                     <h2>Trading With</h2>
@@ -64,11 +62,9 @@
                 </div>
             </div>
 
-            <!-- Right Column for File Upload -->
             <div class="col-lg-9 mt-3 ms-4 BoxContainer">
                 <h1>Upload</h1>
 
-                <!-- Message and Spinner -->
                 <div id="upload-status" class="Loading-Text">
                     <p class="text-success">File Has Been Uploaded. Waiting for Buyer Confirmation.</p>
                     <div class="spinner-container">
