@@ -1,0 +1,89 @@
+
+.Details {
+    color: white;
+    visibility: visible;
+    height: 100vh;
+    white-space: nowrap;
+    position: relative;
+
+}
+
+.Details-Header {
+    text-align: center;
+    width: 90%;
+}
+
+
+.Profile-Pic-Wrapper {
+    display: grid;
+    place-items: center;
+    width: 160px;/* Larger than the image for the border */
+    height: 160px;
+    position: relative;
+    border-radius: 50%;
+    margin: 7%;
+    margin-left: 10%;
+}
+
+.Profile-Pic-Wrapper::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, cyan, transparent, transparent, cyan); /* Cyan and transparent gradient */
+    animation: spin 3s linear infinite; /* Spinning animation */
+    z-index: -1; /* Places the gradient behind the image */
+}
+
+#Profile-Pic {
+    display: grid;
+    place-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    border: 2px solid cyan;
+}
+
+/* Spinning Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Details-2{
+
+display:grid;
+width: 90%;
+position: absolute;
+bottom:14%;
+
+
+}
+
+
+#btn-contract{
+
+    margin-top: 7%;
+}
+#paidbox{
+    width: 100%;
+}
+
+#durationbox{
+    width: 100%;
+}
+@media (max-width: 1200px){
+
+
+    .Details{
+        visibility: hidden;
+        display: none;
+    }
+}

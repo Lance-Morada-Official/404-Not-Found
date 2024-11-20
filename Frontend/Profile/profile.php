@@ -16,7 +16,7 @@
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
 <?php 
 require('..\..\Frontend\Navigation\navigation_bar.php');
-require('..\..\Backend\include\session-include.php');
+
 require('..\..\Backend\include\dbconnect-include.php');
 require('..\..\Backend\Profile\DisplayUserData.php');
 

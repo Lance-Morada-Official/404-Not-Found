@@ -14,7 +14,7 @@
     </style>
 <?php 
 require('..\..\Frontend\Navigation\navigation_bar.php'); 
-require('..\..\Backend\include\session-include.php');
+
 require('..\..\Backend\include\dbconnect-include.php');
 require('..\..\Backend\Wallet\Addamount.php');
 

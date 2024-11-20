@@ -1,3 +1,6 @@
+//Final Database
+V#1 (with roles)
+
 create database BCDatabase;
 use BCDatabase;
 
@@ -47,43 +50,100 @@ foreign key (user_id) references _users(user_id)
 
 create table _friendsystem (
 connected_id bigint primary key auto_increment NOT NULL,
-Muser_id bigint NOT NULL,
-Fuser_id bigint NOT NULL,
-status int NOT NULL,
-dateconnected date,
-constraint fk_mainuser
-foreign key (Muser_id) references _users(user_id),
-constraint fk_frienduser
-foreign key (Fuser_id) references _users(user_id)
+Suser_id bigint NOT NULL,
+Ruser_id bigint NOT NULL,
+status enum('2','1','0') default '1' NOT NULL,
+dateconnected TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+constraint fk_senderuser
+foreign key (Suser_id) references _users(user_id),
+constraint fk_recieveruser
+foreign key (Ruser_id) references _users(user_id)
 );
 
 create table _invitesystem (
 invited_id bigint primary key auto_increment NOT NULL,
 Cuser_id bigint NOT NULL,
 Iuser_id bigint NOT NULL,
-status int NOT NULL,
-dateinvited date,
+status enum('2','1','0') default '1' NOT NULL,
+dateinvited TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
 constraint fk_currentuser
 foreign key (Cuser_id) references _users(user_id),
 constraint fk_inviteduser
 foreign key (Iuser_id) references _users(user_id)
 );
 
+create table _contracts (
+contract_id bigint primary key auto_increment NOT NULL,
+buyer_id bigint NOT NULL,
+seller_id bigint NOT NULL,
+datecreated date,
+checksum varchar (550),
+directory varchar (550),
+constraint fk_buyer
+foreign key (buyer_id) references _users(user_id),
+constraint fk_seller
+foreign key (seller_id) references _users(user_id)
+);
 
-//Admin Account
+create table _escrows (
+escrow_id bigint primary key auto_increment NOT NULL,
+contract_id bigint NOT NULL,
+exp_date date,
+payment DECIMAL(10, 2) DEFAULT 0 NOT NULL,
+file_id bigint,
+status enum('3','2','1','0') default '1' NOT NULL,
+constraint fk_ContractID
+foreign key (contract_id) references _contracts(contract_id),
+constraint fk_FileID
+foreign key (file_id) references _sellerupload(file_id)
+);
+
+create table _traderecords (
+transaction_id bigint primary key auto_increment NOT NULL,
+escrow_id bigint NOT NULL,
+datetrade date,
+constraint fk_Escrow
+foreign key (escrow_id) references _escrows(escrow_id)
+);
+
+//Editable database
+
+
+
+//Transaction Table with user balance
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    balance DECIMAL(10, 2) DEFAULT 0
+);
+
+CREATE TABLE transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    from_user INT,
+    to_user INT,
+    amount DECIMAL(10, 2),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+//Insert
 insert into _users(username,fname,lname,password,email,phone_num)
 Values
-("1admin","Russel","Domingo","russelalan","alanrussel@gmail.com","09974324433"),
-("2admin","Patrick","Maraan","patrick","patrick@gmail.com","09974421533");
-//Assigning Roles
-insert into users_roles (user_id,role_id)
-Values
-("1","2"),
-("2","2");
-//Roles
+("1Admin","Russel","Domingo","russelalan","alanrussel@gmail.com","09974324433"),
+("2Admin","Patrick","Maraan","patrick","patrick@gmail.com","09974421533");
+
 insert into _roles (role_name)
 values
 ("User"),
 ("Admin");
 
+insert into users_roles (user_id,role_id)
+Values
+("1","2"),
+("2","2");
+
+
+
+
+//Drop
+drop database BCDatabase;
 

@@ -5,8 +5,8 @@
 <style>
 body {
     position: absolute; 
-  top: 64px; 
-  left: 0px; 
+  top: 0px; 
+  left: 10px; 
   width: 1440px; 
   height: 836px; 
   background: #161530FF; 
@@ -63,9 +63,9 @@ body {
 
 .profile-form {
     position: absolute; 
-  top: 132px; 
+  top: 100px; 
   left: 464px; 
-  width: 916px; 
+  width: 1000px; 
   height: 700px; 
   background: #F8F9FAFF; /* neutral-150 */
   border-radius: 8px; /* border-xl */
@@ -269,7 +269,7 @@ p [id="result"] {
     font-size: 15px;
     font-weight: bold;
     background: #5d57d9;
-    width: 100px;
+    width: 120px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
@@ -314,23 +314,30 @@ $connect->close();
         <p>Phone Number:</p>
     </div>
     <div class="profile-form">
+		<form method="post" action="SignUpPage.php">
         <div class="text">Contract Form</div>
         <div class="line"></div>
+		
         <div class="duration">Project Duration</div>
         <input type="date">
+		
         <div class="payment">Payment</div>
-        <input type="text" value="$0.00">
-        <div class="balance">Balance</div>
+        <input type="text" name="value" placeholder="$0.00">
+		
         <div class="property">Intellectual Property</div>
-        <textarea id="my-text" rows="5" placeholder="Type something here.."></textarea>
+        <textarea id="my-text" rows="5" name="product" placeholder="Type something here.."></textarea>
         <p id="result"></p>
+		
         <div class="details">Project Details</div>
-        <textarea class="copymy-text" rows="5" placeholder="Type something here.."></textarea>
+        <textarea class="copymy-text" rows="5" name="details" placeholder="Type something here.."></textarea>
         <p id="result"></p>
+		
         <div class="notes">Notes</div>
-        <textarea class="copy-my-text" rows="5" placeholder="Type something here.."></textarea>
+        <textarea class="copy-my-text" rows="5" name="notes" placeholder="Type something here.."></textarea>
         <p id="result"></p>
-        <a href="#"class="btn">Submit</a>
+		
+        <button class="btn" type="submit" name="confirm">Confirm</button>
+		</form>
     </div>
 </div>
 <script src="script.js"></script>

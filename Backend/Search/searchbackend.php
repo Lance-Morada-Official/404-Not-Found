@@ -13,11 +13,12 @@ if (isset($_GET['search'])) {
     $search = $_GET['search'];
 }
 
-//LEFT JOIN _friendsystem AS f ON u.user_id = f.Ruser_id, and (f.Suser_id IS NULL or f.Suser_id = '$Muser_id' ) and (f.Ruser_id IS NULL or f.Ruser_id = '$Muser_id' ) and (f.status IS NULL or f.status = '0')
+//LEFT JOIN _friendsystem AS f ON u.user_id = f.Ruser_id or , and (f.Suser_id IS NULL or f.Suser_id = '$Muser_id' ) and (f.Ruser_id IS NULL or f.Ruser_id = '$Muser_id' ) and (f.status IS NULL or f.status = '0')
 //SELECT * FROM _users AS u INNER JOIN users_roles AS r ON u.user_id = r.user_id where r.role_id = '1' and u.user_id != '$Muser_id'
 //SELECT * FROM _users AS u INNER JOIN users_roles AS r ON u.user_id = r.user_id LEFT JOIN _friendsystem AS f ON u.user_id = f.Ruser_id and u.user_id = f.Suser_id WHERE (r.role_id = '1' and u.user_id != '$Muser_id') and (f.Suser_id IS NULL or f.Suser_id = '$Muser_id' ) and ((f.Ruser_id IS NULL or f.Ruser_id = '$Muser_id' ) or (f.Suser_id IS NULL or f.Suser_id = '$Muser_id' ) and (f.status IS NULL or f.status = '0')) 
+
 //see all users or search specific users except admins
-$selectallu = " SELECT * FROM _users AS u INNER JOIN users_roles AS r ON u.user_id = r.user_id where r.role_id = '1' and u.user_id != '$Muser_id' " ;
+$selectallu = " SELECT * FROM _users AS u INNER JOIN users_roles AS r ON u.user_id = r.user_id where r.role_id = '1' and u.user_id != '$Muser_id'" ;
 if($search){
 	$selectallu = "SELECT * FROM _users AS u INNER JOIN users_roles AS r ON u.user_id = r.user_id  WHERE r.role_id = '1' and (u.user_id != '$Muser_id' or u.username != '$username') and (u.user_id = '$search' or u.username = '$search') "; 
 }
@@ -36,20 +37,17 @@ if(isset($_POST['addfriend'])){
         $row = $checkin->fetch_assoc();
         if ($row['status'] == '2') {
             echo "You are already friends with this user.";
+			header("Location: ..\..\Frontend\Search\search.php?error=friend_already");
         } elseif ($row['status'] == '1') {
             echo "Friend request is already pending.";
+			header("Location: ..\..\Frontend\Search\search.php?error=friend_pending");
         } elseif ($row['status'] == '0') {
-            // Insert a new friend request if no existing relationship is found
-			$sql_insert = "INSERT INTO _friendsystem (Suser_id, Ruser_id) VALUES (?, ?)";
-			$stmt_insert = $connect->prepare($sql_insert);
-			$stmt_insert->bind_param("ii", $Muser_id, $Ruser_id);
-
-			if ($stmt_insert->execute()) {
-				echo "Friend request sent.";
-				header ('location: ..\..\Frontend\Search\search.php');
-			} else {
-				echo "Error: " . $connect->error;
-			}
+            // update friend request to pending (1)
+			$update_status = "UPDATE _friendsystem SET status = '1',dateconnected = current_timestamp where (Suser_id = '$Muser_id' and Ruser_id = '$Ruser_id') or (Suser_id = '$Ruser_id' and Ruser_id = '$Muser_id')";
+						if ($connect->query($update_status)){
+							echo "Updated";
+							header ('location: ..\..\Frontend\Search\search.php');
+						}
         }
     } else {
         // Insert a new friend request if no existing relationship is found

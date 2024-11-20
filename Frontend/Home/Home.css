@@ -1,67 +1,486 @@
 body {
-    background: url('Ayaka_2.jpg') rgba(0, 0, 0, 0.3);
-    background-blend-mode: multiply;
+    background-blend-mode: darken;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    color: #eaeaea;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: fadeInPage 1s ease-in-out;
+}
+a {
+    text-decoration: none;
 }
 
-/* Custom CSS for the container */
-.custom-container-1, .custom-container-2, .custom-container-3 {
-    width: 100%;  /* Full width for all containers */
-    background-color: #f8f9fa; /* Light background */
-    border: 2px solid #007bff; /* Blue border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+
+a:hover {
+    text-decoration: none; 
 }
 
-/* Specific styles for custom-container-3 */
-.custom-container-3 {
-    height: auto; /* Auto height for the container */
-    min-height: 100%; /* Ensure it takes full height of the right column */
+/* Invite Section */
+.custom-container-invites {
+    background-color: #ffffff;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid #e0e0e0;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    color: #343a40; /* Dark text color for heading */
+/* Remove default margin and padding from Bootstrap .row */
+.custom-container-invites .row {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-p {
-    color: #495057; /* Slightly lighter text color for paragraph */
+/* Remove padding and margin from .col-12 */
+.custom-container-invites .row .col-12 {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-.carousel-inner img {
-    height: 400px; /* Set a fixed height for the carousel images */
-    object-fit: cover; /* Ensure images cover the area without stretching */
+/* Title and Subtitle Styles */
+.custom-container-invites h1 {
+    color: #333333;
+    font-size: 2rem;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-bottom: 0; /* Remove margin-bottom to align more closely with subtitle */
 }
 
-/* Custom button to replace container 1 */
-button.custom-container-1 {
-    width: 100%; /* Full width for the button */
-    background-color: #f8f9fa; /* Light background */
-    border: 2px solid #007bff; /* Blue border */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Padding inside the button */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    text-align: left; /* Align text to the left */
-    color: #343a40; /* Dark text color */
+.subtitle {
+    color: #ff8c00;
+    font-size: 1.2rem;
+    margin-top: 0; /* Remove any extra space above the subtitle */
+    margin-bottom: 5%; /* Small margin at the bottom for spacing */
+    margin-left: 3%;
 }
 
-/* Change cursor to pointer for button */
-button.custom-container-1:hover {
+/* Wrap both Title and Subtitle in a flex container */
+.custom-container-invites .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align both items to the left */
+    margin-left: 3%;
+}
+
+/* Horizontal Line Below Title */
+.transactions-heading {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.transactions-heading h1 {
+    margin-bottom: 0;
+}
+
+.transactions-heading::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: #ffffff;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    border-radius: 8px;
+}
+
+/* Invite Card Styles */
+/* Hover effect for Invite Card */
+.invite-card {
+    background-color: #00bcd4;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 !important;
+    border-radius: 0%;
+    margin-bottom: 1px;
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 5px 5px 15px rgba(0.1, 0.1, 0.1, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animate scaling and shadow */
+}
+
+
+/* Add an animation for loading the invites */
+.invite-card {
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Profile Image - Align it to the far left */
+.profile-image {
+    display: flex;
+    align-items: center;
+    margin-right: 8px; /* Space between profile image and username */
+}
+
+.profile-image img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Card Body - Spread out items */
+.invite-card .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribute space dynamically */
+    width: 100%;
+}
+
+/* Username and User ID container */
+.card-body .flex-grow-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Aligns the text vertically to the left */
+    margin-left: 8px; /* Space between the profile image and the text */
+}
+
+/* Ensure the username and ID do not cause resizing */
+.card-body .flex-grow-1 .card-title,
+.card-body .flex-grow-1 .card-text {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Dynamic alignment for the User ID */
+.card-text {
+    display: flex;
+    justify-content: flex-start; /* Left-aligned text */
+    align-items: center; /* Vertically center the User ID */
+    margin: 0;
+}
+
+/* Username alignment - 8px from the right of profile image */
+.card-title {
+    margin-left: 8px; /* Move the username 8px to the right of the profile image */
+}
+
+/* Invite Buttons - Align to the far right */
+.invite-buttons {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+    justify-content: flex-end; /* Align buttons to the right edge of the card */
+}
+
+/* Button styles for accept and decline */
+.btn-accept {
+    background: none;
+    border: none;
+    font-size: 1.5em;
     cursor: pointer;
-    background-color: #e9ecef; /* Slightly darker background on hover */
+    color: #00ff6a;
+    transition: color 0.2s;
 }
 
-/* Adjust heading and paragraph within the button */
-button.custom-container-1 h1 {
-    margin: 0; /* Remove default margins */
-    font-size: 1.5rem; /* Adjust font size */
-    color: #343a40; /* Dark text color */
+.btn-decline {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ff0000;
+    transition: color 0.2s;
 }
 
-button.custom-container-1 p {
-    margin-top: 5px; /* Small space above the paragraph */
-    font-size: 1rem; /* Smaller text for the description */
-    color: #495057; /* Slightly lighter text color */
+.btn-accept, .btn-decline {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease; /* Smooth color and scale transitions */
+}
+
+.btn-accept:hover, .btn-decline:hover {
+    transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+.btn-accept:active, .btn-decline:active {
+    transform: scale(0.95); /* Shrink button on click */
+}
+
+/* Specific colors for hover states */
+.btn-accept:hover {
+    color: #4caf50;
+}
+
+.btn-decline:hover {
+    color: #f44336;
+}
+
+/* On-Going Transactions Section */
+.custom-container-transactions {
+    height: 80vh;
+    min-height: 600px;
+    max-height: calc(100vh - 100px);
+    background-color: #696871;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 5vh;
+    margin-bottom: 10vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding-top: 2%;
+}
+
+/* Transaction Card Styles */
+.transaction-card {
+    background-color: #ffffff;
+    margin-bottom: 1px !important;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Start invisible */
+    transform: translateX(-20px); /* Start off-screen */
+    animation: slideIn 0.6s ease-out forwards; /* Animate sliding in */
+}
+
+/* Keyframes for sliding in */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Start from the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Slide to original position */
+    }
+}
+
+/* Add hover effects on transaction cards */
+.transaction-card:hover {
+    transform: scale(1.03); /* Slightly scale the card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly increase shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transaction-label {
+    width: 15%;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selling-label {
+    background-color: #5c6bc0;
+}
+
+.buying-label {
+    background-color: #4caf50;
+}
+
+.transaction-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.transaction-due {
+    color: #f44336;
+    margin: 0;
+}
+
+.transaction-user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.transaction-user div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.transaction-info p {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .custom-container-invites, .custom-container-transactions {
+        margin: 10px;
+    }
+
+    .transaction-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .transaction-info {
+        flex-direction: column;
+       
+    }
+
+    .transaction-label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .transaction-user {
+        gap: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack the invites and transactions sections */
+    .container-fluid .row {
+        flex-direction: column-reverse;
+    }
+
+    .col-md-3, .col-md-9 {
+        width: 100%;
+    }
+
+    .custom-container-invites, .custom-container-transactions {
+        padding: 10px;
+    }
+
+    .invite-card {
+        padding: 10px;
+    }
+
+    .transactions-heading h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack the profile image and text in invite cards */
+    .invite-card {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .invite-card .card-body {
+        flex-direction: column;
+        align-items: flex-start; /* Align everything to the left on small screens */
+    }
+
+    /* Adjust margins for smaller screens */
+    .invite-card .card-body .flex-grow-1 {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack the profile image and text in invite cards */
+    .invite-card {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .invite-card .card-body {
+        flex-direction: column;
+        align-items: flex-start; /* Align everything to the left on small screens */
+    }
+
+    /* Adjust margins for smaller screens */
+    .invite-card .card-body .flex-grow-1 {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .custom-container-invites, .custom-container-transactions {
+        margin: 10px;
+    }
+
+    .transaction-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .transaction-info {
+        flex-direction: column;
+    }
+
+    .transaction-label {
+        width: 100%;
+        text-align: left;
+    }
+
+    .transaction-user {
+        gap: 5%;
+    }
+
+    /* Adjust Invite Card layout on smaller screens */
+    .invite-card {
+        padding: 10px;
+    }
+
+    .invite-card .card-body {
+        flex-direction: column;
+        align-items: flex-start; /* Align everything to the left on smaller screens */
+    }
+
+    .invite-card .card-body .flex-grow-1 {
+        margin-left: 0;
+    }
+
+    .invite-buttons {
+        margin-left: 0;
+        justify-content: flex-start;
+        gap: 10px; /* More space between buttons */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack the profile image and text in invite cards */
+    .invite-card {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .invite-card .card-body {
+        flex-direction: column;
+        align-items: flex-start; /* Align everything to the left on small screens */
+    }
+
+    /* Adjust margins for smaller screens */
+    .invite-card .card-body .flex-grow-1 {
+        margin-left: 0;
+    }
+}
+@keyframes fadeInPage {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

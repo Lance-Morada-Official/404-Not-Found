@@ -29,18 +29,8 @@ if(isset($_POST['action'])){
 				$astmt_update->bind_param("ii", $sender, $Muser_id);
         
 				if ($astmt_update->execute()) {
-					$sql_insert = "INSERT INTO _friendtable (Muser_id, Fuser_id) VALUES (?, ?)";
-					$stmt_insert = $connect->prepare($sql_insert);
-					$stmt_insert->bind_param("ii", $Muser_id, $sender);
-					if ($stmt_insert->execute()) {
-						$sql_insert = "INSERT INTO _friendtable (Muser_id, Fuser_id) VALUES (?, ?)";
-						$stmt_insert = $connect->prepare($sql_insert);
-						$stmt_insert->bind_param("ii", $sender,$Muser_id );
-							if ($stmt_insert->execute()) {
-								echo "Friend request accepted.";
-								header('location: ..\..\Frontend\Friends\friends.php');
-							}
-					}
+					echo "Friend request accepted.";
+					header('location: ..\..\Frontend\Friends\friends.php');
 					
 				} else {
 					echo "Error: " . $connect->error;
@@ -73,25 +63,24 @@ if(isset($_POST['action'])){
 				}
 			}
 			}
+
 //search a user
 $search = NULL;
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
 }
-
+// /*
 //see all friends or search specific friend
-$selectallf = "SELECT * FROM _users AS u INNER JOIN _friendtable AS f ON u.user_id = f.Fuser_id where f.Muser_id = '$Muser_id'";
+$selectallf = "SELECT * FROM _users AS u INNER JOIN _friendsystem AS f ON u.user_id = f.Ruser_id where f.Suser_id = '$Muser_id' and f.status = '2' UNION ALL SELECT * FROM _users AS u INNER JOIN _friendsystem AS f ON u.user_id = f.Suser_id where f.Ruser_id = '$Muser_id' and f.status = '2'";
+
 if($search){
-	$selectallf = "SELECT * FROM _users AS u INNER JOIN _friendtable AS f ON u.user_id = f.Fuser_id where f.Muser_id = '$Muser_id' and (u.user_id != '$Muser_id' or u.username != '$username') and (u.user_id = '$search' or u.username = '$search')";
+	$selectallf = "SELECT * FROM _users AS u INNER JOIN _friendsystem AS f ON u.user_id = f.Ruser_id where f.Suser_id = '$Muser_id' and (u.user_id != '$Muser_id' or u.username != '$username') and (u.user_id = '$search' or u.username = '$search') and f.status = '2' UNION ALL SELECT * FROM _users AS u INNER JOIN _friendsystem AS f ON u.user_id = f.Suser_id where f.Ruser_id = '$Muser_id' and (u.user_id != '$Muser_id' or u.username != '$username') and (u.user_id = '$search' or u.username = '$search') and f.status = '2'";
 }
 $fetchallf = $connect->query($selectallf);
 
 //Unfriending
 if(isset($_POST['unfriend'])){
 	$Fuser_id = $_POST['friendid'];
-
-	$unfriend = "Delete from _friendtable where (Muser_id = '$Muser_id' and Fuser_id = '$Fuser_id') or (Muser_id = '$Fuser_id' and Fuser_id = '$Muser_id')";
-	if($connect->query($unfriend)){
 		//check if there existing request
 		$invited = $connect->prepare("Select * from _friendsystem where (Suser_id = ? and Ruser_id = ?) or (Suser_id = ? and Ruser_id = ?) ");
 		$invited->bind_param("iiii", $Muser_id,$Fuser_id,$Fuser_id,$Muser_id);
@@ -108,11 +97,6 @@ if(isset($_POST['unfriend'])){
 						}
 				}
 			}
-		
-		
-	}else{
-		echo "Failed to unfriend" . $connect->error;
-	}
 }
-
+// */
 ?>
