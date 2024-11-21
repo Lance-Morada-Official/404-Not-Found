@@ -91,7 +91,7 @@ contract_id bigint NOT NULL,
 exp_date date,
 payment DECIMAL(10, 2) DEFAULT 0 NOT NULL,
 file_id bigint,
-status enum('3','2','1','0') default '1' NOT NULL,
+status enum('6','5','4','3','2','1','0') default '1' NOT NULL,
 constraint fk_ContractID
 foreign key (contract_id) references _contracts(contract_id),
 constraint fk_FileID
