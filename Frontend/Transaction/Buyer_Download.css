@@ -1,0 +1,25 @@
+.UploadBox{
+
+    background-color: transparent;
+    border: 1px solid;
+    display: grid;
+    place-items: center;
+    height: 75%;
+    position: relative;
+    margin: 5%;
+    
+    }
+
+.form-control{
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+ 
+#btn-download{
+        position:fixed;
+        bottom: 5%;
+        right: 5%;
+    }
+    
+    
