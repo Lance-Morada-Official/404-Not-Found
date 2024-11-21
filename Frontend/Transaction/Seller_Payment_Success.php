@@ -65,7 +65,8 @@
                     <label for="TradePayment">Received:</label>
                     <input type="number" id="TradePayment" name="TradePayment" placeholder="00.00" readonly>
                 </div>
-                <button type="button" id="btn-home" class="btn btn-success">Home</button>
+                <button type="button" id="btn-home" class="btn btn-success" onclick="window.location.href='../Home/Home.php';">Home</button>
+        
             </div>
 
                 
