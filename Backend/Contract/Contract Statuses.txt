@@ -1,0 +1,17 @@
+Status
+
+1 - buyer make contract (submitted), seller wait for contract
+
+2 - seller confirms ( if not good to seller/edit), buyer wait for seller responce to contrct
+
+3 - buyer receives the edited (accept or not accept(edit)) , seller wait for contract
+
+4 - both agreed (seller will upload), seller uplaod , buyer will wait for upload
+
+5 - seller uploaded, buyer will preview (accept or not the previewed pro) seller wait if transaction comp or not
+
+(back to 1) - if buyer not accept
+
+0 - after going back to contract and is not resolved after 5 days (rejected)
+
+6 - buyer accepts (escrow will be save into transaction) seller gets money and buyer can download pro.

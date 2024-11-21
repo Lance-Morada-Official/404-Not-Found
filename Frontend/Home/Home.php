@@ -79,8 +79,15 @@
                         <h1>On-Going Transactions</h1>
                     </div>
 
-                    <!-- Example Transactions -->
-                    <a href="transaction-detail.php" class="transaction-card selling">
+                    <!-- Transactions -->
+				<?php if ($sellerside->num_rows > 0): ?>
+					<?php while ($sellerrow = $sellerside->fetch_assoc()): ?>
+                    <a href="<?php if($sellerrow['status'] === '1'){
+						echo '..\..\Frontend\Contract\Seller_Wait_Contract_Of_Buyer.php';
+					}elseif($sellerrow['status'] === '2'){
+						echo '..\..\Frontend\Contract\Seller_View_Contract.php';
+					}
+					?>"class="transaction-card selling">
                         <span class="transaction-label selling-label">Selling</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
@@ -89,15 +96,26 @@
                                     <img src="path/to/profile-image-placeholder.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
                                 </div>
                                 <div>
-                                    <p>Username</p>
-                                    <p>User ID</p>
+                                    <p>Buyer: <?php echo htmlspecialchars($sellerrow['username']); ?></p>
+                                    <p>User ID: <?php echo htmlspecialchars($sellerrow['user_id']); ?></p>
                                 </div>
                             </div>
                             <p class="transaction-due">Due in 1 M : 24 D : 54 M : 59 S</p>
                         </div>
                     </a>
-
-                    <a href="transaction-detail.php" class="transaction-card buying">
+					<?php endwhile; ?>
+				<?php else: ?>
+						
+				<?php endif; ?>
+					
+				<?php if ($buyerside->num_rows > 0): ?>
+					<?php while ($buyerrow = $buyerside->fetch_assoc()): ?>
+                    <a href="<?php if($buyerrow['status'] === '1'){
+						echo '..\..\Frontend\Contract\Buyer_Contract.php';
+					}elseif($buyerrow['status'] === '2'){
+						echo '..\..\Frontend\Contract\Buyer_Wait_Seller_Respond_Contract.php';
+					}
+					?>"class="transaction-card buying">
                         <span class="transaction-label buying-label">Buying</span>
                         <div class="transaction-info">
                             <div class="transaction-user">
@@ -106,15 +124,21 @@
                                     <img src="path/to/profile-image-placeholder.jpg" alt="Profile" class="img-fluid rounded-circle" style="width: 50px; height: 50px;">
                                 </div>
                                 <div>
-                                    <p>Username</p>
-                                    <p>User ID</p>
+                                    <p>Seller: <?php echo htmlspecialchars($buyerrow['username']); ?></p>
+                                    <p>User ID: <?php echo htmlspecialchars($buyerrow['user_id']); ?></p>
                                 </div>
                             </div>
                             <p class="transaction-due">Due in 1 M : 24 D : 54 M : 59 S</p>
                         </div>
                     </a>
+					<?php endwhile; ?>
+				<?php else: ?>
+						
+				<?php endif; ?>
                 </div>
             </div>
+			
+			
         </div>
     </div>
 

@@ -26,7 +26,12 @@
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     
     <!-- Navigation Bar -->
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
+    <?php 
+	include '../../Frontend/Navigation/navigation_bar.php'; 
+	include '../../Backend/include/sessionbuyer-include.php';
+	include '../../Backend/include/dbconnect-include.php';
+	include '../../Backend/Contract/Seller_View_Contract_Backend.php';
+	?>
 
     <div class="container-fluid">
         <div class="row">
@@ -42,40 +47,41 @@
                 </div>
                 
                 <?php
-                    $Details = ["Username", "User ID", "Email", "Phone"];
+                    $Details = ["Username"=>"Username: $buyername", "User ID"=>"User ID: $buyerid", "Email"=>"Email Address: $buyeremail", "Phone"=>"Phone Number: $buyerphone"];
                     foreach ($Details as $Detail) {
-                        echo "<h6>$Detail:</h6>";
+                        echo "<h6>$Detail</h6>";
                     }
                 ?>
             </div>
 
             <div class="col-lg-9 mt-3 ms-4 BoxContainer">
+			
                 <div id="Top-Form" class="form-container row">
                     <div class="form-item">
                         <label for="paidbox">Paid</label>
-                        <input type="number" id="paidbox" name="paidbox" placeholder="$00.00" readonly>
+                        <input type="number" id="paidbox" name="paidbox" placeholder="<?php echo $payment ?>" readonly>
                     </div>
 
                     <div class="form-item">
                         <label for="durationbox">Duration:</label>
-                        <input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY" readonly>
+                        <input type="date" id="durationbox" name="durationbox" placeholder="<?php echo $duration ?>" readonly>
                     </div>
                 </div>
 
                 <div id="Bottom-Form" class="form-container row mt-3">
                     <div class="col-12 form-item mt-3">
                         <label for="projectdetails">Project Details:</label>
-                        <textarea id="projectdetails" name="projectdetails" rows="4" placeholder="Enter project details here..." class="form-control" readonly></textarea>
+                        <textarea id="projectdetails" name="projectdetails" rows="4" placeholder="<?php echo $projectdetails ?>" class="form-control" readonly></textarea>
                     </div>
 
                     <div class="col-12 form-item mt-3">
                         <label for="intellectualproperty">Intellectual Property:</label>
-                        <textarea id="intellectualproperty" name="intellectualproperty" rows="4" placeholder="Enter intellectual property details here..." class="form-control" readonly></textarea>
+                        <textarea id="intellectualproperty" name="intellectualproperty" rows="4" placeholder="<?php echo $intellectualproperty ?>" class="form-control" readonly></textarea>
                     </div>
 
                     <div class="col-12 form-item mt-3">
                         <label for="notes">Notes:</label>
-                        <textarea id="notes" name="notes" rows="4" placeholder="Enter notes here..." class="form-control" readonly></textarea>
+                        <textarea id="notes" name="notes" rows="4" placeholder="<?php echo $notes ?>" class="form-control" readonly></textarea>
                     </div>
                 </div>
                 
@@ -89,6 +95,7 @@
                     <i class="bi bi-x fs-4"></i>
                 </button>
                 <button id="btn-accept" class="btn btn-success" style="display: inline-block;">Accept</button>
+			
             </div>
         </div>
     </div>

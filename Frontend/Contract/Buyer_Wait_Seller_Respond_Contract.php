@@ -16,7 +16,12 @@
 </head>
 
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
+    <?php 
+	include '../../Frontend/Navigation/navigation_bar.php';
+	include '../../Backend/include/sessionseller-include.php';
+	include '../../Backend/include/dbconnect-include.php';
+	include '../../Backend/Contract/Buyer_Wait_Seller_Respond_Contract_Backend.php';
+	?>
 
     <div class="container-fluid">
         <div class="row">
@@ -32,9 +37,9 @@
                 </div>
                 
                 <?php
-                    $Details = ["Username", "User ID", "Email", "Phone"];
+                    $Details = ["Username"=>"Username: $sellername", "User ID"=>"User ID: $sellerid", "Email"=>"Email Address: $selleremail", "Phone"=>"Phone Number: $sellerphone"];
                     foreach ($Details as $Detail) {
-                        echo "<h6>$Detail:</h6>";
+                        echo "<h6>$Detail</h6>";
                     }
                 ?>
                 

@@ -28,10 +28,13 @@
     
     <!-- Navigation Bar -->
     <?php 
-	include '../../Frontend/Navigation/navigation_bar.php';
-	include '../../Backend/include/sessionseller-include.php';
-	include '../../Backend/include/dbconnect-include.php'; 
-	include '../../Backend/Contract/Buyer_Contract_Backend.php';
+	include '..\..\Frontend\Navigation\navigation_bar.php';
+	include '..\..\Backend\include\sessionseller-include.php';
+	include '..\..\Backend\include\dbconnect-include.php'; 
+	include '..\..\Backend\Contract\Buyer_Contract_Backend.php';
+	
+	
+	
 	?>
 
     <div class="container-fluid">
@@ -55,18 +58,19 @@
                 ?>
             </div>
 
-            <div class="col-lg-9 mt-3 ms-4 BoxContainer">
-            <div id= "Top-Form" class="form-container row">
-                <div class="form-item">
-                <label for="paidbox">Paid</label>
-                <input type="number" id="paidbox" name="paidbox" placeholder="$00.00">
-                </div>
-
+<div class="col-lg-9 mt-3 ms-4 BoxContainer">
+<form  method="post">
+    <div id= "Top-Form" class="form-container row">
         <div class="form-item">
-            <label for="durationbox">Duration:</label>
-            <input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY">
-                </div>
-    </div>
+        <label for="paidbox">Paid</label>
+        <input type="number" id="paidbox" name="paidbox" placeholder="$00.00">
+        </div>
+
+		<div class="form-item">
+		<label for="durationbox">Duration:</label>
+		<input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY">
+        </div>
+	</div>
 
     <div id = "Bottom-Form" class="form-container row mt-3">
         <div class="col-12 form-item mt-3">
@@ -85,8 +89,8 @@
         </div>
     </div>
     
-    <button type="button" id="btn-Confirm" class="btn btn-success">Submit</button>
-
+    <button type="submit" name="confirm" id="btn-Confirm" class="btn btn-success">Submit</button>
+</form>
 </div>
 
     
