@@ -48,7 +48,30 @@
     
 }
 
+#btn-Action{
+
+    float: right;
+    margin-top: 2%;
+}
+
+#btn-accept{
+    float: right;
+    margin-top: 2%;
+}
+
+#btn-save{
+
+    float: right;
+    margin-top: 2%;
+}
+
 .pencil-btn i {
     color: white;
     font-size: 1rem !important;
+}
+
+.btn-success{
+
+float: left;
+
 }

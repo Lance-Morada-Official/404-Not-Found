@@ -85,20 +85,15 @@
                     <i class="bi bi-pencil fs-4"></i>
                 </button>
                 <button id="btn-save" class="btn btn-success" style="display: none;">Save</button>
-                <button id="btn-cancel" class="btn btn-danger" style="display: none;">
-                    <i class="bi bi-x fs-4"></i>
-                </button>
                 <button id="btn-accept" class="btn btn-success" style="display: inline-block;">Accept</button>
             </div>
         </div>
     </div>
-
     <script>
-  document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
     const editButton = document.getElementById("btn-edit");
     const saveButton = document.getElementById("btn-save");
-    const cancelButton = document.getElementById("btn-cancel");
-    const actionButton = document.getElementById("btn-Action");
+    const actionButton = document.getElementById("btn-Action");  // Send button
     const acceptButton = document.getElementById("btn-accept");
     const formElements = document.querySelectorAll(
         "#paidbox, #durationbox, #projectdetails, #intellectualproperty, #notes"
@@ -106,12 +101,12 @@
     let editMode = false;
     let formChanged = false;
     let originalValues = {}; // To store the original form values
+    let isSaved = false; // Flag to track if "Save" has been clicked during the session
 
     // Initially disable form elements
     toggleFormElements(false); // Disable form fields initially
     saveButton.style.display = "none"; // Hide Save button initially
-    cancelButton.style.display = "none"; // Hide Cancel button initially
-    actionButton.style.display = "none"; // Hide Action button initially
+    actionButton.style.display = "none"; // Hide Send button initially
     acceptButton.style.display = "inline-block"; // Show Accept button initially
 
     // Save original form values
@@ -120,24 +115,21 @@
     // Toggle Edit Button Functionality
     editButton.addEventListener("click", () => {
         if (editMode) {
-            // Switch to non-editing mode (Cancel)
+            // Cancel editing if there are changes
+            if (formChanged) {
+                restoreOriginalValues();
+            }
+            // Switch back to non-editing mode
             toggleFormElements(false); // Disable form fields
             editButton.innerHTML = '<i class="bi bi-pencil fs-4"></i>'; // Change button to pencil
             saveButton.style.display = "none"; // Hide Save button
-            cancelButton.style.display = "none"; // Hide Cancel button
-            actionButton.style.display = formChanged ? "inline-block" : "none"; // Show Send button if changes were made
-            acceptButton.style.display = !formChanged ? "inline-block" : "none"; // Show Accept button if no changes
-
-            // Discard changes if cancel button is pressed
-            if (!formChanged) {
-                restoreOriginalValues();
-            }
+            actionButton.style.display = formChanged || isSaved ? "inline-block" : "none"; // Show Send button if changes were made or if form was saved
+            acceptButton.style.display = !formChanged && !isSaved ? "inline-block" : "none"; // Show Accept button only if no changes and Save hasn't been clicked
         } else {
             // Switch to editing mode (Enable form fields)
             toggleFormElements(true); // Enable form fields
             editButton.innerHTML = '<i class="bi bi-x fs-4"></i>'; // Change button to X (cancel icon)
             saveButton.style.display = "inline-block"; // Show Save button
-            cancelButton.style.display = "inline-block"; // Show Cancel button
             actionButton.style.display = "none"; // Hide Send button in edit mode
             acceptButton.style.display = "none"; // Hide Accept button during edit mode
         }
@@ -150,7 +142,7 @@
             formChanged = true;
             // Update action button visibility based on editing status
             actionButton.style.display = !editMode && formChanged ? "inline-block" : "none"; // Show Send button only outside edit mode and if changes were made
-            acceptButton.style.display = !editMode && !formChanged ? "inline-block" : "none";  // Show Accept button if no edit mode and no changes
+            acceptButton.style.display = !editMode && !formChanged && !isSaved ? "inline-block" : "none";  // Show Accept button if no edit mode, no changes, and Save hasn't been clicked
         });
     });
 
@@ -189,47 +181,42 @@
         // After saving, revert to "Send" state and disable edit mode
         toggleFormElements(false);
         editButton.innerHTML = '<i class="bi bi-pencil fs-4"></i>';
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
-        actionButton.style.display = formChanged ? "inline-block" : "none";
-        acceptButton.style.display = formChanged ? "none" : "inline-block"; // Accept button is hidden when changes are made
-        editMode = false;
+        saveButton.style.display = "none"; // Hide Save button
+        // Show Send button only if there are changes or it was saved, else show Accept
+        actionButton.style.display = formChanged || isSaved ? "inline-block" : "none"; 
+        acceptButton.style.display = !formChanged && !isSaved ? "inline-block" : "none"; // Show Accept button if no changes and Save hasn't been clicked
+        isSaved = true; // Set the flag to true since the form has been saved
         formChanged = false; // Reset the form changed flag
+        editMode = false;
     });
 
-    // Action button "Cancel" functionality
-    cancelButton.addEventListener("click", () => {
-        // Discard changes and restore original values
-        restoreOriginalValues();
-
-        // Switch back to Accept button view
-        toggleFormElements(false);
-        editButton.innerHTML = '<i class="bi bi-pencil fs-4"></i>';
-        saveButton.style.display = "none";
-        cancelButton.style.display = "none";
+    // Action button "Send" functionality
+    actionButton.addEventListener("click", () => {
+        // Handle the Send functionality here
+        console.log("Changes sent", {
+            paidbox: document.getElementById("paidbox").value,
+            durationbox: document.getElementById("durationbox").value,
+            projectdetails: document.getElementById("projectdetails").value,
+            intellectualproperty: document.getElementById("intellectualproperty").value,
+            notes: document.getElementById("notes").value
+        });
+        // Optionally hide the Send button after the changes are sent
         actionButton.style.display = "none";
-        acceptButton.style.display = "inline-block";
-        editMode = false;
-        formChanged = false;
     });
 
     // Action button "Accept" functionality
     acceptButton.addEventListener("click", () => {
-        if (!formChanged) {
-            // Redirect to a different page if the contract is accepted (no changes)
-            window.location.href = "accepted_contract_page.php";  // Replace with actual redirection link
+        if (!formChanged && !isSaved) {
+            // Redirect to another page, send form data, or finalize contract.
+            console.log("Contract Accepted!");
         }
-    });
-
-    // Action button "Send" functionality (appears when form is edited)
-    actionButton.addEventListener("click", () => {
-        // Simulate sending contract back to buyer
-        console.log("Contract sent back to buyer");
-        // Optionally, you can redirect or process as needed
     });
 });
 
+</script>
 
-    </script>
+
+
+
 </body>
 </html>
