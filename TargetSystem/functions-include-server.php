@@ -15,7 +15,7 @@
 
     function decryptData($encryptedDataBase64, $privateKey){
         // Get the private key .pem file
-        $privateKey = file_get_contents('resources/securepay_private_key.pem');
+        $privateKey = file_get_contents('resources/chainguard_private_key.pem');
 
         // Decode the base64 encrypted data
         $encryptedData = base64_decode($encryptedDataBase64);
@@ -24,7 +24,8 @@
         openssl_private_decrypt($encryptedData, $decryptedData, $privateKey);
 
         // Display the decrypted data
-        echo "Decrypted Data: " . $decryptedData . "\n";
+        //echo "Decrypted Data: " . $decryptedData . "\n";
+        return $decryptedData;
     }
     
 ?>
