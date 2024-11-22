@@ -26,11 +26,17 @@
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     
     <!-- Navigation Bar -->
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
+    <?php 
+	include '..\..\Frontend\Navigation\navigation_bar.php';
+	include '..\..\Backend\include\sessionseller-include.php';
+	include '..\..\Backend\include\dbconnect-include.php'; 
+	include '..\..\Backend\Contract\Buyer_View_Edited_Contract_Backend.php';
+	
+	?>
 
     <div class="container-fluid">
         <div class="row">
-            
+        
             <!-- Left Column for Buyer Details -->
             <div class="col-lg-2 mt-3 mb-3 ms-3 Details">
                 <div class="Details-Header">
@@ -38,63 +44,70 @@
                 </div>
                 
                 <div class="Profile-Pic-Wrapper">
-                    <img src="../Assets/Test_IMG_1.JPG" id="Profile-Pic" alt="Buyer Profile" class="Buyer-IMG">
+                    <img src="../Assets/Test_IMG_1.JPG" id="Profile-Pic" alt="Seller Profile" class="Buyer-IMG">
                 </div>
                 
                 <?php
-                    $Details = ["Username", "User ID", "Email", "Phone"];
+                    $Details = ["Username"=>"Username: $sellername", "User ID"=>"User ID: $sellerid", "Email"=>"Email Address: $selleremail", "Phone"=>"Phone Number: $sellerphone"];
                     foreach ($Details as $Detail) {
-                        echo "<h6>$Detail:</h6>";
+                        echo "<h6>$Detail</h6>";
                     }
                 ?>
             </div>
-
+		
             <div class="col-lg-9 mt-3 ms-4 BoxContainer">
+			
                 <div id="Top-Form" class="form-container row">
+				
                     <div class="form-item">
+			<form method="post" >
                         <label for="paidbox">Paid</label>
-                        <input type="number" id="paidbox" name="paidbox" placeholder="$00.00" readonly>
+                        <input type="number" id="paidbox" name="paidbox" value="<?php echo $payment ?>" readonly>
                     </div>
 
                     <div class="form-item">
                         <label for="durationbox">Duration:</label>
-                        <input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY" readonly>
+                        <input type="date" id="durationbox" name="durationbox" value="<?php echo $duration ?>" readonly>
                     </div>
                 </div>
 
                 <div id="Bottom-Form" class="form-container row mt-3">
                     <div class="col-12 form-item mt-3">
                         <label for="projectdetails">Project Details:</label>
-                        <textarea id="projectdetails" name="projectdetails" rows="4" placeholder="Enter project details here..." class="form-control" readonly></textarea>
+                        <textarea id="projectdetails" name="projectdetails" rows="4" placeholder="" class="form-control" readonly><?php echo $projectdetails ?></textarea>
                     </div>
 
                     <div class="col-12 form-item mt-3">
                         <label for="intellectualproperty">Intellectual Property:</label>
-                        <textarea id="intellectualproperty" name="intellectualproperty" rows="4" placeholder="Enter intellectual property details here..." class="form-control" readonly></textarea>
+                        <textarea id="intellectualproperty" name="intellectualproperty" rows="4" placeholder="" class="form-control" readonly><?php echo $intellectualproperty ?></textarea>
                     </div>
 
                     <div class="col-12 form-item mt-3">
                         <label for="notes">Notes:</label>
-                        <textarea id="notes" name="notes" rows="4" placeholder="Enter notes here..." class="form-control" readonly></textarea>
+                        <textarea id="notes" name="notes" rows="4" placeholder="" class="form-control" readonly><?php echo $notes ?></textarea>
                     </div>
                 </div>
-                
+            
                 <!-- Buttons Section -->
-                <button type="button" id="btn-Action" class="btn btn-success" style="display: none;">Send</button>
-                <button id="btn-edit" class="btn btn-primary pencil-btn">
-                    <i class="bi bi-pencil fs-4"></i>
-                </button>
-                <button id="btn-save" class="btn btn-success" style="display: none;">Save</button>
-                <button id="btn-cancel" class="btn btn-danger" style="display: none;">
-                    <i class="bi bi-x fs-4"></i>
-                </button>
-                <button id="btn-accept" class="btn btn-success" style="display: inline-block;">Accept</button>
+                <button name="action" type="submit" value="send" id="btn-Action" class="btn btn-success" style="display: none;">Send</button>
+				
+				<button id="btn-edit" class="btn btn-primary pencil-btn" type="button">
+				<i class="bi bi-pencil fs-4"></i>
+				</button>
+				
+				<button  id="btn-save" class="btn btn-success" name="action" value="save" style="display: none;">Save</button>
+				<button id="btn-cancel" class="btn btn-danger" type="button" style="display: none;">
+				<i class="bi bi-x fs-4"></i>
+				</button>
+				<button id="btn-accept" class="btn btn-success"  name="action" value="accept" style="display: inline-block;">Accept</button>
+
+			</form>
             </div>
         </div>
     </div>
 
     <script>
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const editButton = document.getElementById("btn-edit");
     const saveButton = document.getElementById("btn-save");
     const cancelButton = document.getElementById("btn-cancel");
@@ -176,7 +189,9 @@
     }
 
     // Action button "Save" functionality
-    saveButton.addEventListener("click", () => {
+    saveButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the form submission that causes a page reload
+
         // Save changes (you can send them to the server or process here)
         console.log("Changes saved", {
             paidbox: document.getElementById("paidbox").value,
@@ -191,8 +206,11 @@
         editButton.innerHTML = '<i class="bi bi-pencil fs-4"></i>';
         saveButton.style.display = "none";
         cancelButton.style.display = "none";
+
+        // Show Send button if changes were made, otherwise show Accept button
         actionButton.style.display = formChanged ? "inline-block" : "none";
-        acceptButton.style.display = formChanged ? "none" : "inline-block"; // Accept button is hidden when changes are made
+        acceptButton.style.display = formChanged ? "none" : "inline-block"; // Show Accept button if no changes were made
+
         editMode = false;
         formChanged = false; // Reset the form changed flag
     });
@@ -212,24 +230,7 @@
         editMode = false;
         formChanged = false;
     });
-
-    // Action button "Accept" functionality
-    acceptButton.addEventListener("click", () => {
-        if (!formChanged) {
-            // Redirect to a different page if the contract is accepted (no changes)
-            window.location.href = "accepted_contract_page.php";  // Replace with actual redirection link
-        }
-    });
-
-    // Action button "Send" functionality (appears when form is edited)
-    actionButton.addEventListener("click", () => {
-        // Simulate sending contract back to buyer
-        console.log("Contract sent back to buyer");
-        // Optionally, you can redirect or process as needed
-    });
 });
-
-
     </script>
 </body>
 </html>

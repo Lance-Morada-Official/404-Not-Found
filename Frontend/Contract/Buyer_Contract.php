@@ -33,8 +33,6 @@
 	include '..\..\Backend\include\dbconnect-include.php'; 
 	include '..\..\Backend\Contract\Buyer_Contract_Backend.php';
 	
-	
-	
 	?>
 
     <div class="container-fluid">

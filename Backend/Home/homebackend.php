@@ -3,7 +3,7 @@
 		if(isset($_POST['trade'])){
 			header('location: ..\..\Frontend\Invite\invite.php');
 		}
-		
+		echo "<meta http-equiv='refresh' content='5'>";
 		//user_id session not working, had to query to get the ID
 		$username = $_SESSION['username'];
 		$getid = "Select user_id from _users where username = '$username'";
@@ -53,7 +53,9 @@
 		// INNER JOIN _escrows AS e ON c.contract_id = e.contract_id
 		/*UNION SELECT e.status,e.exp_date FROM _escrows AS e INNER JOIN _contracts AS c ON e.contract_id = c.contract_id  where c.seller_id = '$Muser_id'*/
 		
+		
 		// View all users Ongoing Transaction
+		
 		$fetchallsellerside = "SELECT username,user_id,status,exp_date FROM _users AS u INNER JOIN _contracts AS c ON u.user_id = c.buyer_id INNER JOIN _escrows AS e ON c.contract_id = e.contract_id where c.seller_id = '$Muser_id' ";
 		$sellerside = $connect->query($fetchallsellerside);
 		

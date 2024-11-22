@@ -24,12 +24,17 @@ $sellerphone = $idsrow['phone_num'];
 	if ($fetchstatus['status'] == '3') {
 			echo "<meta http-equiv='refresh' content='5'>";
             echo "Status: Contract is being edited";
-			header('location: ..\..\Frontend\Contract\Buyer_Wait_Seller_Respond_Contract.php');
+			header('location: ..\..\Frontend\Contract\Buyer_View_Edited_Contract.php');
 			
 			
         }
 		elseif ($fetchstatus['status'] == '2') {
 			echo "<meta http-equiv='refresh' content='5'>";
         }
-
+		elseif ($fetchstatus['status'] == '4')
+		{
+			echo "seller accepts the contract";
+			echo "<meta http-equiv='refresh' content='5'>";
+			header('location: ..\..\Frontend\Upload\Buyer_Wait_Seller_Upload.php');
+        }
 ?>

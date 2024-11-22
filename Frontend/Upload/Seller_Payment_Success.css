@@ -1,0 +1,28 @@
+.BoxContainer {
+
+    align-content: center !important;
+
+}
+
+.SuccessContainer{
+    display: grid;
+    background-color: #00bcd4;
+    height: 75%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    box-shadow: 4px 4px 4px rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+.Trade-Success-Text{
+    margin-bottom: 10%
+}
+
+#btn-home{
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 15%;
+        text-align: center;
+        
+}
+

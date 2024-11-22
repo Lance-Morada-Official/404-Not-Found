@@ -22,7 +22,7 @@ if (isset($_POST['confirm'])){
 	$notes = $_POST['notes'];
 	
 	$folder = "../../Backend/Contract/CSVFILES/"; // Define the folder name
-	$createdate = date('Y-m-d H:i:s'); // Current timestamp
+	//$createdate = date('Y-m-d H:i:s'); // Current timestamp-
 
 	// Check if the folder exists; if not, create it
 	if (!file_exists($folder)) {

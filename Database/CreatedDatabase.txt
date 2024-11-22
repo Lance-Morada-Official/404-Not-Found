@@ -76,7 +76,7 @@ create table _contracts (
 contract_id bigint primary key auto_increment NOT NULL,
 buyer_id bigint NOT NULL,
 seller_id bigint NOT NULL,
-datecreated date,
+datecreated varchar (550),
 checksum varchar (550),
 directory varchar (550),
 constraint fk_buyer

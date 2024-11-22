@@ -24,7 +24,12 @@
 
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
+    <?php 
+	include '..\..\Frontend\Navigation\navigation_bar.php'; 
+	include '..\..\Backend\include\sessionbuyer-include.php';
+	include '..\..\Backend\include\dbconnect-include.php';
+	include '..\..\Backend\Upload\Seller_Uploaded_Waiting_Confirmation_Backend.php';
+	?>
 
     <div class="container-fluid">
         <div class="row">
@@ -39,9 +44,9 @@
                 </div>
                 
                 <?php
-                    $Details = ["Username", "User ID", "Email", "Phone"];
+                    $Details = ["Username"=>"Username: $buyername", "User ID"=>"User ID: $buyerid", "Email"=>"Email Address: $buyeremail", "Phone"=>"Phone Number: $buyerphone"];
                     foreach ($Details as $Detail) {
-                        echo "<h6>$Detail:</h6>";
+                        echo "<h6>$Detail</h6>";
                     }
                 ?>
                 
@@ -50,15 +55,17 @@
                         <label for="paidbox">Paid:</label>
                     </div>
                     <div class="mb-3">
-                        <input type="number" id="paidbox" name="paidbox" placeholder="$00.00" readonly>
+                        <input type="number" id="paidbox" name="paidbox" value="<?php echo $payment; ?>" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="durationbox">Duration:</label>
                     </div>
                     <div class="mb-3">
-                        <input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY" readonly>
+                        <input type="date" id="durationbox" name="durationbox" value="<?php echo $exp_date; ?>" readonly>
                     </div>
-                    <button type="button" id="btn-contract" class="btn btn-secondary">View Contract</button>
+                    <form method="post" action="../../Backend/Upload/Seller_View_Final_Contract.php" target="_blank">
+					<button type="submit" id="btn-contract" class="btn btn-secondary">View Contract</button>
+				</form>
                 </div>
             </div>
 

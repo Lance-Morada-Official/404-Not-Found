@@ -16,7 +16,13 @@
 </head>
 
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
-    <?php include '../../Frontend/Navigation/navigation_bar.php'; ?>
+    <?php 
+	include '..\..\Frontend\Navigation\navigation_bar.php';
+	include '..\..\Backend\include\sessionseller-include.php';
+	include '..\..\Backend\include\dbconnect-include.php'; 
+	include '..\..\Backend\Upload\Buyer_Preview_Upload_Backend.php';
+	
+	?>
 
     <div class="container-fluid">
         <div class="row">
@@ -31,10 +37,10 @@
                 </div>
 
                 <?php
-                $Details = ["Username", "User ID", "Email", "Phone"];
-                foreach ($Details as $Detail) {
-                    echo "<h6>$Detail:</h6>";
-                }
+                    $Details = ["Username"=>"Username: $sellername", "User ID"=>"User ID: $sellerid", "Email"=>"Email Address: $selleremail", "Phone"=>"Phone Number: $sellerphone"];
+                    foreach ($Details as $Detail) {
+                        echo "<h6>$Detail</h6>";
+                    }
                 ?>
 
                 <div class="Details-2">
@@ -42,15 +48,17 @@
                         <label for="paidbox">Paid:</label>
                     </div>
                     <div class="mb-3">
-                        <input type="number" id="paidbox" name="paidbox" placeholder="$00.00" readonly>
+                        <input type="number" id="paidbox" name="paidbox" value="<?php echo $payment; ?>" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="durationbox">Duration:</label>
                     </div>
                     <div class="mb-3">
-                        <input type="date" id="durationbox" name="durationbox" placeholder="MM/DD/YYYY" readonly>
+                        <input type="date" id="durationbox" name="durationbox" value="<?php echo $exp_date; ?>" readonly>
                     </div>
-                    <button type="button" id="btn-contract" class="btn btn-secondary">View Contract</button>
+                    <form method="post" action="../../Backend/Upload/Buyer_View_Final_Contract.php" target="_blank">
+						<button type="submit" id="btn-contract" class="btn btn-secondary">View Contract</button>
+					</form>
                 </div>
             </div>
 
@@ -59,12 +67,12 @@
                 <div class="mx-2 UploadBox" id="upload-preview">
                     <h5 class="text-white">Preview</h5>
                     <div id="preview-content" class="mt-3">
-                        <p class="text-muted">Preview of the Digital Product will appear here.</p>
+						<img src="<?php echo "$pathdirectory"; ?>" />
                     </div>
                 </div>
                 <div class="mt-2">
                     <label for="file-title">Title</label>
-                    <input type="text" id="file-title" class="form-control" placeholder="File title here" readonly />
+                    <input type="text" id="file-title" class="form-control" placeholder="<?php echo $art_title; ?>" readonly />
                 </div>
 
                 <div class="mt-2">

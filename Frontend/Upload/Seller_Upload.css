@@ -4,7 +4,7 @@ background-color: transparent;
 border: 1px solid;
 display: grid;
 place-items: center;
-height: 50%;
+height: 75%;
 position: relative;
 margin: 5%;
 
@@ -12,6 +12,12 @@ margin: 5%;
 
 #file-upload{
     align-items: center;
+}
+
+.form-control{
+    margin-top: 2%;
+    margin-bottom: 2%;
+
 }
 
 #btn-submit{

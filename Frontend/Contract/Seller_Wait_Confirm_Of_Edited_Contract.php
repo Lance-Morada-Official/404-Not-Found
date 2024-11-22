@@ -17,11 +17,10 @@
 
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     <?php 
-	
-	include '../../Frontend/Navigation/navigation_bar.php';
-	include '../../Backend/include/sessionseller-include.php';
+	include '../../Frontend/Navigation/navigation_bar.php'; 
+	include '../../Backend/include/sessionbuyer-include.php';
 	include '../../Backend/include/dbconnect-include.php';
-	include '../../Backend/Contract/Buyer_Wait_Seller_Respond_Contract_Backend.php';
+	include '../../Backend/Contract/Seller_Wait_Confirm_Of_Edited_Contract_Backend.php';
 	?>
 
     <div class="container-fluid">
@@ -34,11 +33,11 @@
                 </div>
                 
                 <div class="Profile-Pic-Wrapper">
-                    <img src="../Assets/Test_IMG_1.JPG" id="Profile-Pic" alt="Seller Profile" class="Buyer-IMG">
+                    <img src="../Assets/Test_IMG_1.JPG" id="Profile-Pic" alt="Buyer Profile" class="Buyer-IMG">
                 </div>
                 
                 <?php
-                    $Details = ["Username"=>"Username: $sellername", "User ID"=>"User ID: $sellerid", "Email"=>"Email Address: $selleremail", "Phone"=>"Phone Number: $sellerphone"];
+                    $Details = ["Username"=>"Username: $buyername", "User ID"=>"User ID: $buyerid", "Email"=>"Email Address: $buyeremail", "Phone"=>"Phone Number: $buyerphone"];
                     foreach ($Details as $Detail) {
                         echo "<h6>$Detail</h6>";
                     }
@@ -49,7 +48,7 @@
             <div class="col-lg-9 mt-3 ms-4 BoxContainer">
                 
             <div class = "Loading-Text mt-2">
-                    <h1>Waiting for Seller's Contract Confirmation.</h1>
+                    <h1>Waiting for Buyer's Confirmation of Edited Contract.</h1>
 
                  
                     <div class="spinner-container">
@@ -64,8 +63,7 @@
                             <span class="visually-hidden">Loading...</span>
                         </div>
 
-                        </div>
-                        <button type="button" id="btn-home" class="btn btn-secondary">Home</button>
+                    </div>
             </div>
         </div>
         </div>

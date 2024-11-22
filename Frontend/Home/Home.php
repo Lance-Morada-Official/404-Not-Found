@@ -21,6 +21,7 @@
 <body class="vh-100 overflow-hidden" style="font-family: 'Poppins', sans-serif; background-color: #161530;">
     <?php 
 	include '..\..\Frontend\Navigation\navigation_bar.php'; 
+	
 		
 		require('..\..\Backend\include\dbconnect-include.php');
 		require('..\..\Backend\Home\homebackend.php');
@@ -86,6 +87,12 @@
 						echo '..\..\Frontend\Contract\Seller_Wait_Contract_Of_Buyer.php';
 					}elseif($sellerrow['status'] === '2'){
 						echo '..\..\Frontend\Contract\Seller_View_Contract.php';
+					}elseif($sellerrow['status'] === '3'){
+						echo '..\..\Frontend\Contract\Seller_Wait_Confirm_Of_Edited_Contract.php';
+					}elseif($sellerrow['status'] === '4'){
+						echo '..\..\Frontend\Upload\Seller_Upload.php';
+					}elseif($sellerrow['status'] === '5'){
+						echo '..\..\Frontend\Upload\Seller_Uploaded_Waiting_Confirmation.php';
 					}
 					?>"class="transaction-card selling">
                         <span class="transaction-label selling-label">Selling</span>
@@ -114,6 +121,12 @@
 						echo '..\..\Frontend\Contract\Buyer_Contract.php';
 					}elseif($buyerrow['status'] === '2'){
 						echo '..\..\Frontend\Contract\Buyer_Wait_Seller_Respond_Contract.php';
+					}elseif($buyerrow['status'] === '3'){
+						echo '..\..\Frontend\Contract\Buyer_View_Edited_Contract_Backend.php';
+					}elseif($buyerrow['status'] === '4'){
+						echo '..\..\Frontend\Upload\Buyer_Wait_Seller_Upload.php';
+					}elseif($buyerrow['status'] === '5'){
+						echo '..\..\Frontend\Upload\Buyer_Preview_Upload.php';
 					}
 					?>"class="transaction-card buying">
                         <span class="transaction-label buying-label">Buying</span>
