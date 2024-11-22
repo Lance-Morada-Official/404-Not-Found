@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Login | 404 NOT FOUND</title>
+    <title>Login</title>
 <script type="text/javascript">
         // Check for URL query parameters to show alerts
         window.onload = function() {

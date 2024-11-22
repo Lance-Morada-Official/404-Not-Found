@@ -11,13 +11,13 @@
 	<style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
     </style>
-    <title>Navigation Bar Test</title>
+    <title>Friends</title>
 </head>
 <body class="vh-100 overflow-hidden">
     <?php 
 	include '..\..\Frontend\Navigation\navigation_bar.php'; 
 	require('..\..\Backend\include\session-include.php');
-	require('..\..\Backend\include\dbconnect-include.php');
+require('..\..\Backend\include\dbconnect-include.php');
 	require('..\..\Backend\Friends\friendbackend.php');
 	$connect->close();
 	?>
