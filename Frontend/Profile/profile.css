@@ -1,1 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+.container-fluid{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.card{
+    border-radius: 0px;
+    margin: 0 !important;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #161530;
+    color: #fff;
+}
+
+.profile-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.edit-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-container:hover .edit-overlay {
+    opacity: 1;
+}
+
+.edit-overlay i {
+    font-size: 24px;
+}
+
+.badge{
+    width: 75%;
+}
+
+.table td[colspan="5"] {
+   text-align: center;
+}
+#logoutBtn {
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 10px 20px;
+    width: 150px;
+    text-align: center;
+}
+
+#logoutBtn:hover {
+    background-color: #c82333; /* Red color on hover */
+}
+
+
+@media(max-width: 992px){
+
+    .card{
+        visibility: hidden;
+        display: none;
+    }
+    .table-responsive {
+        display: block; 
+        height: 100vh;   
+        overflow-y: auto; 
+        padding-top: 0; 
+        margin-top: 0; 
+    }
+
+    .table {
+        margin-top: 0;  
+        padding-top: 0;  
+        width: 100%; 
+    }
+}

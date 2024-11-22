@@ -31,25 +31,27 @@ $connect->close();
     
     <!-- Row 1 -->
     <div class="row mb-3">
+    <div class="col-md-6">
+            <label class="form-label d-block">₱ PHP</label>
+            <input type="text" class="form-control" value="₱1" readonly>
+        </div>
         <div class="col-md-6">
             <label class="form-label d-block">System Currency</label>
             <input type="text" class="form-control" value="1.00" readonly>
         </div>
-        <div class="col-md-6">
-            <label class="form-label d-block">₱ PHP</label>
-            <input type="text" class="form-control" value="₱1" readonly>
-        </div>
+        
     </div>
 
     <!-- Row 2 -->
     <div class="row mb-3">
-        <div class="col-md-6">
-            <label class="form-label d-block">System Currency</label>
-            <input type="text" class="form-control" value="0.017" readonly>
-        </div>
+        
         <div class="col-md-6">
             <label class="form-label d-block">$ USD</label>
             <input type="text" class="form-control" value="$1.00" readonly>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label d-block">System Currency</label>
+            <input type="text" class="form-control" value="0.017" readonly>
         </div>
     </div>
 </div>
@@ -57,16 +59,16 @@ $connect->close();
 
             <div class="col-9 ConversionContainer">
                 <div class="card text-center p-4 shadow-lg wallet-card">
-                    <h3 class="mb-4">Buy System Currency</h3>
+                    <h3 class="mb-4">Sell System Currency</h3>
                     <form  method="POST" action="wallet.php">
                     <div class="mb-3">
                     <!-- Add min="0" to prevent negative values in the input -->
                     <input type="number" class="form-control" name="amount" id="currencyInput" placeholder="Enter amount" min="0" required>
                     </div>
-                    <button type="submit" name="submit" id = "btn-buy" class="btn btn-primary">Buy</button>
+                    <button type="submit" name="submit" id = "btn-buy" class="btn btn-primary">Sell</button>
                     </form>
                     <div id="displayAmount" class="mt-4 alert alert-info d-none">
-                    You have entered <span id="amountDisplay"></span> digital currency.
+                    You have entered <span id="amountDisplay"></span> system currency.
                     </div>
                 </div>
             </div>

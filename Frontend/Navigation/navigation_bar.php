@@ -25,8 +25,8 @@
                 <a class="nav-link" href="..\..\Frontend\Search\search.php">Add</a>
                 <a class="nav-link" href="..\..\Frontend\Friends\friends.php">Friends</a>
                 <a class="nav-link" href="..\..\Frontend\Profile\profile.php">Profile</a>
-                <a class="nav-link" href="..\..\Frontend\Profile\profile.php">Notification</a>
-                <a class="nav-link" href="..\..\Frontend\Wallet\wallet.php">Wallet</a>
+                <a class="nav-link" href="">Notification</a>
+                <a class="nav-link" href="..\..\Frontend\Wallet\Wallet-Entrance.php">Wallet</a>
                 <span class="account-balance me-3">$<?php echo number_format($account_balance ?? 0, 2); ?></span>
             </div>
         </div>

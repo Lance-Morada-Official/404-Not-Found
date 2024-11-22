@@ -1,8 +1,53 @@
-.wallet-card {
-    max-width: 400px;
-    width: 100%;
-    border-radius: 12px;
+
+h3 {
+    color: #161530;
+    margin: 3%; 
+}
+
+input[readonly] {
+    background-color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ced4da;
+}
+
+label {
+    font-size: 0.9rem;
+    color: #495057;     
+    display: block;    
+    margin-bottom: 4px; 
+}
+
+.ConversionDisplay{
+    
+    height: 100vh;
+    margin: 0;
     background-color: #f8f9fa;
+}
+
+.ConversionContainer{
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    height: 100%;
+}
+
+.card{
+
+    border-radius: 0px;
+    margin-bottom: 64px;
+}
+
+.wallet-card {
+    background-color: #f8f9fa;
+    padding: 5%;
+    height:40vh;
+    width: 75vh;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
 #currencyInput {
@@ -12,3 +57,30 @@
 #displayAmount {
     font-size: 1.1rem;
 }	
+
+#btn-buy{
+    margin-top: 15%;
+    width: 20%;
+}
+
+@media(max-width: 1210px){
+    .ConversionDisplay{
+        visibility: hidden;
+        display: none;
+    }
+    .ConversionContainer{
+        display: flex;
+        height: calc(100% - 64px) !important;
+        width: 100% !important;
+        margin: 0% !important;
+        
+    }
+    .wallet-card{
+        height:calc(100vh - 64px);
+        width:100%;
+        display: flex;
+        border-radius: 0;
+    }
+   
+  
+}
